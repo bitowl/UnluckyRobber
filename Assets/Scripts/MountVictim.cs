@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class MountVictim : MonoBehaviour
 {
+    public MovementController MovementController;
+
+    public HingeJoint MountJoint;
     public Transform MountPoint;
-    public Transform GameWorld;
 
     private Victim _victim;
     private Victim _victimInReach;
@@ -18,6 +20,11 @@ public class MountVictim : MonoBehaviour
     private float _throwTime;
     public float MaxThrowTime;
 
+    public bool CanThrowSometing
+    {
+        get { return _victim != null || _victimInReach != null; }
+    }
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -25,25 +32,14 @@ public class MountVictim : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-	    if (_beginThrow)
-	    {
-	        _throwTime += Time.deltaTime;
-	    }
-        if (Input.GetButtonDown("Fire1"))
+        if (_beginThrow)
         {
-            ThrowingButtonDown();
-
+            _throwTime += Time.deltaTime;
         }
-        if (Input.GetButtonUp("Fire1"))
-        {
-            ThrowingButtonUp();
-
-        }
-
     }
 
 
-    void ThrowingButtonDown()
+    public void ThrowingButtonDown()
     {
         if (_victim != null)
         {
@@ -58,7 +54,7 @@ public class MountVictim : MonoBehaviour
    
     }
 
-    void ThrowingButtonUp()
+    public void ThrowingButtonUp()
     {
         if (_victim != null && _beginThrow)
         {
@@ -73,7 +69,7 @@ public class MountVictim : MonoBehaviour
     {
         if (_victim == null && other.gameObject.layer == 9 && other.GetComponent<Victim>() != null) // victim
         {
-            Debug.Log("victim in reach");
+            Debug.Log("victim in reach " + other);
            _victimInReach = other.GetComponent<Victim>();
 
         }
@@ -81,16 +77,35 @@ public class MountVictim : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.transform == _victimInReach)
+        if (_victimInReach != null && other.gameObject == _victimInReach.gameObject)
         {
             Debug.Log("victim out of reach");
             _victimInReach = null;
         }
     }
 
+    private Rigidbody _ToConnect;
+
+    void FixedUpdate()
+    {
+        if (_ToConnect != null)
+        {
+            MountJoint.connectedBody = _ToConnect;
+            _ToConnect = null;
+        }
+    }
+
     private void PickUpVictim()
     {
+    
+
+        Debug.Log("pick up victim");
         _victim = _victimInReach;
+        _victim.transform.position = MountPoint.transform.position;
+
+        _ToConnect = _victim.Hip;
+       // MountJoint.connectedBody = _victim.Hip;
+
         _victim.PickUp(MountPoint);
         // _victim.transform.position = Vector3.zero;
         //   _victim.transform.SetParent(transform, false);
@@ -99,7 +114,8 @@ public class MountVictim : MonoBehaviour
     private void ThrowVictim(Vector3 ThrowForce)
     {
 //        _victim.transform.SetParent(gameWorld);
-        _victim.Throw(new Vector3((GetComponent<MovementController>().LookingRight ? 1:-1) * ThrowForce.x, ThrowForce.y, ThrowForce.z));
+        _victim.Throw(new Vector3((MovementController.LookingRight ? 1:-1) * ThrowForce.x, ThrowForce.y, ThrowForce.z));
+        MountJoint.connectedBody = null;
         _victim = null;
     }
 }
