@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MountVictim : MonoBehaviour
 {
-    public Transform Player;
+    public Player Player;
     public MovementController MovementController;
 
     public HingeJoint MountJoint;
@@ -42,6 +42,7 @@ public class MountVictim : MonoBehaviour
         {
             _throwTime += Time.deltaTime;
         }
+        Player.Animator.SetBool("carry", IsCarrying);
     }
 
 
@@ -98,9 +99,9 @@ public class MountVictim : MonoBehaviour
         if (_ToConnect != null)
         {
             bool inv = false;
-            if (Player.localScale.x < 0) // HACKY HACK HACK: The joint does not behave well, if the player is scaled wrongly
+            if (Player.transform.localScale.x < 0) // HACKY HACK HACK: The joint does not behave well, if the player is scaled wrongly
             {
-                Player.localScale = new Vector3(-Player.localScale.x, Player.localScale.y, Player.localScale.z);
+                Player.transform.localScale = new Vector3(-Player.transform.localScale.x, Player.transform.localScale.y, Player.transform.localScale.z);
                 inv = true;
             }
 
@@ -110,7 +111,7 @@ public class MountVictim : MonoBehaviour
 
             if (inv)
             {
-                Player.localScale = new Vector3(-Player.localScale.x, Player.localScale.y, Player.localScale.z);
+                Player.transform.localScale = new Vector3(-Player.transform.localScale.x, Player.transform.localScale.y, Player.transform.localScale.z);
             }
         }
     }
@@ -133,6 +134,7 @@ public class MountVictim : MonoBehaviour
 
     private void ThrowVictim(Vector3 ThrowForce)
     {
+        Player.Animator.SetTrigger("throw");
 //        _victim.transform.SetParent(gameWorld);
         _victim.Throw(new Vector3((MovementController.LookingRight ? 1:-1) * ThrowForce.x, ThrowForce.y, ThrowForce.z));
         MountJoint.connectedBody = null;

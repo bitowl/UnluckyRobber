@@ -52,7 +52,7 @@ public class MovementController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log("grounded:" +_isGrounded + " jump: " + _doJump);
+        // Debug.Log("grounded:" +_isGrounded + " jump: " + _doJump);
         if (GameManager.instance.GameOver)
         {
             return; // No player updates 

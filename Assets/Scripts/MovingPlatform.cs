@@ -22,7 +22,7 @@ public class MovingPlatform : MonoBehaviour
 	void Update ()
 	{
 	    time += Time.deltaTime;
-        Debug.Log((0.5f * Mathf.Sin(time * Speed) + 0.5f));
+        // Debug.Log((0.5f * Mathf.Sin(time * Speed) + 0.5f));
 	    transform.position = (0.5f*Mathf.Sin(time * Speed)+0.5f) * (_target - _initial) + _initial;
 	}
 }
