@@ -62,10 +62,13 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
-        gameObject.transform.position = new Vector3(0, 0, 0);
+        // gameObject.transform.position = new Vector3(0, 0, 0);
         if (MountVictim.IsCarrying)
         {
             MountVictim.DropVictim();
         }
+        GameManager.instance.GameOver = true;
+        
+
     }
 }

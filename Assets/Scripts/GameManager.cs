@@ -10,9 +10,15 @@ public class GameManager : MonoBehaviour
 
     public int TimePerGame = 100;
 
+    private bool _gameOver;
     public bool GameOver
     {
-        get { return _time <= 0; }
+        get { return _gameOver; }
+        set
+        {
+            _gameOver = value;
+            UI.GameOver.SetActive(_gameOver);
+        }
     }
 
     private int _score;
@@ -43,13 +49,15 @@ public class GameManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-	    _time -= Time.deltaTime;
-	    if (_time < 0)
-	    {
-	        _time = 0;
-            UI.GameOver.SetActive(true);
-	    }
-	    UI.Time = (int)_time;
+        if (!_gameOver) { 
+	        _time -= Time.deltaTime;
+	        if (_time < 0)
+	        {
+	            _time = 0;
+                GameObject.Find("Player").GetComponent<Player>().Die();
+	        }
+        }
+        UI.Time = (int)_time;
         UI.Score = _score;
 
 	}
@@ -62,7 +70,7 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-        UI.GameOver.SetActive(false);
+        GameOver = false;
         // TODO unload scene
         InitGame();
         

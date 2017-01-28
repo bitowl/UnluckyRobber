@@ -118,7 +118,6 @@ public class MountVictim : MonoBehaviour
 
     private void PickUpVictim()
     {
-    
 
         Debug.Log("pick up victim");
         _victim = _victimInReach;
