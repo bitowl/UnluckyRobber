@@ -17,7 +17,7 @@ public class MovementController : MonoBehaviour
 
     private Rigidbody _rigidbody;
 
-    private bool _isGrounded = false;
+    public bool _isGrounded = false;
     private bool _doJump = false;
     private bool _lookingRight = true;
 
