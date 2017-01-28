@@ -1,0 +1,163 @@
+fileFormatVersion: 2
+guid: 7aecb3a951ef05d49a929450b3bf290c
+timeCreated: 1485611542
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Armature
+    100002: back1
+    100004: back2
+    100006: Circle
+    100008: Circle_005
+    100010: fingers1_l
+    100012: fingers1_r
+    100014: fingers2_l
+    100016: fingers2_r
+    100018: foot_l
+    100020: foot_l_target
+    100022: foot_r
+    100024: hand_l
+    100026: hand_r
+    100028: head
+    100030: head_001
+    100032: hip
+    100034: indexFinger1_l
+    100036: indexFinger1_r
+    100038: indexFinger2_l
+    100040: indexFinger2_r
+    100042: lowerArm_l
+    100044: lowerArm_r
+    100046: lowerLeg_l
+    100048: lowerLeg_r
+    100050: //RootNode
+    100052: shoulder_l
+    100054: shoulder_r
+    100056: thumb_l
+    100058: thumb_r
+    100060: upperArm_l
+    100062: upperArm_r
+    100064: upperLeg_l
+    100066: upperLeg_r
+    100068: weaponBone
+    400000: Armature
+    400002: back1
+    400004: back2
+    400006: Circle
+    400008: Circle_005
+    400010: fingers1_l
+    400012: fingers1_r
+    400014: fingers2_l
+    400016: fingers2_r
+    400018: foot_l
+    400020: foot_l_target
+    400022: foot_r
+    400024: hand_l
+    400026: hand_r
+    400028: head
+    400030: head_001
+    400032: hip
+    400034: indexFinger1_l
+    400036: indexFinger1_r
+    400038: indexFinger2_l
+    400040: indexFinger2_r
+    400042: lowerArm_l
+    400044: lowerArm_r
+    400046: lowerLeg_l
+    400048: lowerLeg_r
+    400050: //RootNode
+    400052: shoulder_l
+    400054: shoulder_r
+    400056: thumb_l
+    400058: thumb_r
+    400060: upperArm_l
+    400062: upperArm_r
+    400064: upperLeg_l
+    400066: upperLeg_r
+    400068: weaponBone
+    4300000: Circle_005
+    4300002: Circle
+    7400000: Default Take
+    7400002: attaack
+    7400004: attaack_001
+    7400006: attaack_002
+    7400008: attaack_003
+    7400010: die
+    7400012: falling
+    7400014: jumping
+    7400016: jumpSkill
+    7400018: running
+    7400020: standard_pose
+    7400022: superheroLanding
+    7400024: winning1
+    9500000: //RootNode
+    13700000: Circle
+    13700002: Circle_005
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.25
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
