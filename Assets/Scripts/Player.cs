@@ -3,18 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(MovementController))]
-[RequireComponent(typeof(MountVictim))]
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour
+{
+
+    public MountVictim MountVictim;
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start ()
+	{
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+    
+        if (Input.GetButtonDown("Fire1"))
+        {
+            if (MountVictim.CanThrowSometing)
+            {
+                MountVictim.ThrowingButtonDown();
+            }
+            else
+            {
+                // TODO: punch
+            }
+
+        }
+        if (Input.GetButtonUp("Fire1"))
+        {
+            if (MountVictim.CanThrowSometing)
+            {
+                MountVictim.ThrowingButtonUp();
+            }
+        }
+
+    }
 
     public void Die()
     {

@@ -17,10 +17,10 @@ public class Victim : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-	    if (_followTransform != null)
+	  /*  if (_followTransform != null)
 	    {
 	        transform.position = _followTransform.position;
-	    }
+	    }*/
 	}
 
     void FixedUpdate()
@@ -36,7 +36,7 @@ public class Victim : MonoBehaviour
     public void Throw(Vector3 force)
     {
         _followTransform = null;
-        Hip.isKinematic = false;
+       // Hip.isKinematic = false;
         _throwForce = force;
         _throw = true;
     }
@@ -44,7 +44,7 @@ public class Victim : MonoBehaviour
     public void PickUp(Transform followTransform)
     {
         _followTransform = followTransform;
-        Hip.isKinematic = true;
+        //Hip.isKinematic = true;
     }
 
 }
