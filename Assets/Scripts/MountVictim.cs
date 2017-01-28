@@ -84,6 +84,17 @@ public class MountVictim : MonoBehaviour
         }
     }
 
+    private Rigidbody _ToConnect;
+
+    void FixedUpdate()
+    {
+        if (_ToConnect != null)
+        {
+            MountJoint.connectedBody = _ToConnect;
+            _ToConnect = null;
+        }
+    }
+
     private void PickUpVictim()
     {
     
@@ -91,7 +102,10 @@ public class MountVictim : MonoBehaviour
         Debug.Log("pick up victim");
         _victim = _victimInReach;
         _victim.transform.position = MountPoint.transform.position;
-        MountJoint.connectedBody = _victim.Hip;
+
+        _ToConnect = _victim.Hip;
+       // MountJoint.connectedBody = _victim.Hip;
+
         _victim.PickUp(MountPoint);
         // _victim.transform.position = Vector3.zero;
         //   _victim.transform.SetParent(transform, false);
