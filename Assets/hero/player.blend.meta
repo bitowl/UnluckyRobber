@@ -41,6 +41,7 @@ ModelImporter:
     100066: upperLeg_l
     100068: upperLeg_r
     100070: weaponBone
+    100072: head_001
     400000: Armature
     400002: back1
     400004: back2
@@ -77,6 +78,7 @@ ModelImporter:
     400066: upperLeg_l
     400068: upperLeg_r
     400070: weaponBone
+    400072: head_001
     4300000: kopf3
     4300002: kopf2
     4300004: Circle_005
