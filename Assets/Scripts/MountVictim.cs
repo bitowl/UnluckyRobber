@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class MountVictim : MonoBehaviour
 {
-    public Transform gameWorld;
+    public Transform MountPoint;
+    public Transform GameWorld;
+    public Vector3 ThrowForce;
 
     private Victim _victim;
     private Victim _victimInReach;
@@ -53,7 +55,7 @@ public class MountVictim : MonoBehaviour
     private void PickUpVictim()
     {
         _victim = _victimInReach;
-        _victim.PickUp(transform);
+        _victim.PickUp(MountPoint);
         // _victim.transform.position = Vector3.zero;
         //   _victim.transform.SetParent(transform, false);
     }
@@ -61,7 +63,7 @@ public class MountVictim : MonoBehaviour
     private void ThrowVictim()
     {
 //        _victim.transform.SetParent(gameWorld);
-        _victim.Throw(new Vector3(10, 0, 0));
+        _victim.Throw(new Vector3((GetComponent<MovementController>().LookingRight ? 1:-1) * ThrowForce.x, ThrowForce.y, ThrowForce.z));
         _victim = null;
     }
 }
