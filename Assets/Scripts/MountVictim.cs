@@ -77,7 +77,7 @@ public class MountVictim : MonoBehaviour
     {
         if (_victim == null && other.gameObject.layer == 9 && other.GetComponent<Victim>() != null) // victim
         {
-            Debug.Log("victim in reach " + other);
+            //Debug.Log("victim in reach " + other);
            _victimInReach = other.GetComponent<Victim>();
 
         }
@@ -87,7 +87,7 @@ public class MountVictim : MonoBehaviour
     {
         if (_victimInReach != null && other.gameObject == _victimInReach.gameObject)
         {
-            Debug.Log("victim out of reach");
+            //Debug.Log("victim out of reach");
             _victimInReach = null;
         }
     }
@@ -118,7 +118,6 @@ public class MountVictim : MonoBehaviour
 
     private void PickUpVictim()
     {
-    
 
         Debug.Log("pick up victim");
         _victim = _victimInReach;

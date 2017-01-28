@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -10,13 +11,23 @@ public class GameManager : MonoBehaviour
 
     public int TimePerGame = 100;
 
+    private bool _gameOver;
+
     public bool GameOver
     {
-        get { return _time <= 0; }
+        get { return _gameOver; }
+        set
+        {
+            _gameOver = value;
+            UI.GameOver.SetActive(_gameOver);
+        }
     }
 
     private int _score;
     private float _time;
+
+    public string InitialLevel;
+    private string _currentLevel;
 
     void Awake()
     {
@@ -28,31 +39,72 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    
+
         DontDestroyOnLoad(gameObject);
-        InitGame();
+        InitGame(InitialLevel);
+    }
+
+    void Start()
+    {
+        if (UI == null)
+        {
+            UI = GameObject.Find("UI").GetComponent<UI>();
+        }
     }
 
     // Initializes the game for each level.
-    void InitGame()
+    void InitGame(string levelName)
     {
         _time = TimePerGame;
+        GameObject.Find("player").GetComponent<Player>().ResetPlayer();
 
+        var uiLoaded = false;
+        var nextSceneLoaded = false;
+        if (_currentLevel != null)
+        {
+            SceneManager.UnloadSceneAsync(_currentLevel);
+        }
+
+        for (var i = 0; i < SceneManager.sceneCount; i++)
+        {
+            if (SceneManager.GetSceneAt(i).name == "UI")
+            {
+                uiLoaded = true;
+            }
+            if (SceneManager.GetSceneAt(i).name == levelName)
+            {
+                nextSceneLoaded = true;
+            }
+        }
+        if (!uiLoaded)
+        {
+            SceneManager.LoadScene("UI", LoadSceneMode.Additive);
+        }
+        if (!(nextSceneLoaded && _currentLevel == null))
+        {
+            SceneManager.LoadScene(levelName, LoadSceneMode.Additive);
+            
+        }
+        _currentLevel = levelName;
+        Debug.Log(SceneManager.GetActiveScene().name);
+//        SceneManager.LoadScene("TestLevel_Stefan", LoadSceneMode.Additive);
     }
-	
-	// Update is called once per frame
-	void Update ()
-	{
-	    _time -= Time.deltaTime;
-	    if (_time < 0)
-	    {
-	        _time = 0;
-            UI.GameOver.SetActive(true);
-	    }
-	    UI.Time = (int)_time;
-        UI.Score = _score;
 
-	}
+    // Update is called once per frame
+    void Update()
+    {
+        if (!_gameOver)
+        {
+            _time -= Time.deltaTime;
+            if (_time < 0)
+            {
+                _time = 0;
+                GameObject.Find("player").GetComponent<Player>().Die();
+            }
+        }
+        UI.Time = (int) _time;
+        UI.Score = _score;
+    }
 
 
     public void AddScore(int score)
@@ -62,9 +114,8 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-        UI.GameOver.SetActive(false);
+        GameOver = false;
         // TODO unload scene
-        InitGame();
-        
+        InitGame(_currentLevel);
     }
 }
