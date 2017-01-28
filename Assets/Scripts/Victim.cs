@@ -27,7 +27,7 @@ public class Victim : MonoBehaviour
     {
         if (_throw)
         {
-            Debug.Log("THROOOOW FORCE");
+            Debug.Log("THROOOOW FORCE " +_throwForce);
             Hip.AddForce(_throwForce);
             _throw = false;
         }

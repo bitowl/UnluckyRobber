@@ -6,10 +6,17 @@ public class MountVictim : MonoBehaviour
 {
     public Transform MountPoint;
     public Transform GameWorld;
-    public Vector3 ThrowForce;
 
     private Victim _victim;
     private Victim _victimInReach;
+
+
+    // throw strength
+    public Vector3 MinThrowForce;
+    public Vector3 MaxThrowForce;
+    private bool _beginThrow;
+    private float _throwTime;
+    public float MaxThrowTime;
 
 	// Use this for initialization
 	void Start ()
@@ -18,17 +25,32 @@ public class MountVictim : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetButtonDown("Fire1"))
-        {
+	    if (_beginThrow)
+	    {
+	        _throwTime += Time.deltaTime;
+	    }
+
+        if (Input.GetButtonDown("Fire1")) {
 
             if (_victim != null)
             {
-                ThrowVictim();
+                _beginThrow = true;
+                _throwTime = 0;
             }
             else if (_victimInReach != null)
             {
                 PickUpVictim();
             }
+        }
+	    if (Input.GetButtonUp("Fire1"))
+	    {
+	        if (_victim != null && _beginThrow)
+	        {
+	            _beginThrow = false;
+	            var factor = Mathf.Min(_throwTime / MaxThrowTime, 1);
+                ThrowVictim(factor * (MaxThrowForce-MinThrowForce) + MinThrowForce);
+            }
+
         }
     }
 
@@ -60,7 +82,7 @@ public class MountVictim : MonoBehaviour
         //   _victim.transform.SetParent(transform, false);
     }
 
-    private void ThrowVictim()
+    private void ThrowVictim(Vector3 ThrowForce)
     {
 //        _victim.transform.SetParent(gameWorld);
         _victim.Throw(new Vector3((GetComponent<MovementController>().LookingRight ? 1:-1) * ThrowForce.x, ThrowForce.y, ThrowForce.z));
