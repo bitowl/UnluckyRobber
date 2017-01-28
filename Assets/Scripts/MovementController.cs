@@ -37,6 +37,7 @@ public class MovementController : MonoBehaviour
         {
             _doJump = true;
         }
+
     }
 
     void FixedUpdate()
