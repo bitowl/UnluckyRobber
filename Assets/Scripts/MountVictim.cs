@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MountVictim : MonoBehaviour
 {
+    public Transform Player;
     public MovementController MovementController;
 
     public HingeJoint MountJoint;
@@ -48,6 +49,7 @@ public class MountVictim : MonoBehaviour
         }
         else if (_victimInReach != null)
         {
+            _beginThrow = false;
             PickUpVictim();
         }
 
@@ -90,8 +92,21 @@ public class MountVictim : MonoBehaviour
     {
         if (_ToConnect != null)
         {
+            bool inv = false;
+            if (Player.localScale.x < 0) // HACKY HACK HACK: The joint does not behave well, if the player is scaled wrongly
+            {
+                Player.localScale = new Vector3(-Player.localScale.x, Player.localScale.y, Player.localScale.z);
+                inv = true;
+            }
+
+            _ToConnect.transform.position = MountPoint.transform.position;
             MountJoint.connectedBody = _ToConnect;
             _ToConnect = null;
+
+            if (inv)
+            {
+                Player.localScale = new Vector3(-Player.localScale.x, Player.localScale.y, Player.localScale.z);
+            }
         }
     }
 
@@ -101,7 +116,7 @@ public class MountVictim : MonoBehaviour
 
         Debug.Log("pick up victim");
         _victim = _victimInReach;
-        _victim.transform.position = MountPoint.transform.position;
+
 
         _ToConnect = _victim.Hip;
        // MountJoint.connectedBody = _victim.Hip;

@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(MovementController))]
 public class Player : MonoBehaviour
 {
-    private MovementController _movementController;
+    protected MovementController _movementController;
 
     public MountVictim MountVictim;
     public Transform PunchPoint;
