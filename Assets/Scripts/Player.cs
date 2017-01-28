@@ -12,13 +12,12 @@ public class Player : MonoBehaviour
     public float PunchRadius;
     public LayerMask PunchableLayerMask;
     public Vector3 PunchForce;
-    private Animator _animator;
+    public Animator Animator;
 
 	// Use this for initialization
 	void Start ()
 	{
 	    _movementController = GetComponent<MovementController>();
-	    _animator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -48,7 +47,7 @@ public class Player : MonoBehaviour
 
     public void Punch()
     {
-        _animator.SetTrigger("attack");
+        Animator.SetTrigger("attack");
         var colliders = Physics.OverlapSphere(PunchPoint.position, PunchRadius, PunchableLayerMask);
         foreach (var collider in colliders)
         {
