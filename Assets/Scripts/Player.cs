@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(MovementController))]
+[RequireComponent(typeof(MountVictim))]
 public class Player : MonoBehaviour {
 
 	// Use this for initialization

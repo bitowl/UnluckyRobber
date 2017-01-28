@@ -29,28 +29,42 @@ public class MountVictim : MonoBehaviour
 	    {
 	        _throwTime += Time.deltaTime;
 	    }
+        if (Input.GetButtonDown("Fire1"))
+        {
+            ThrowingButtonDown();
 
-        if (Input.GetButtonDown("Fire1")) {
-
-            if (_victim != null)
-            {
-                _beginThrow = true;
-                _throwTime = 0;
-            }
-            else if (_victimInReach != null)
-            {
-                PickUpVictim();
-            }
         }
-	    if (Input.GetButtonUp("Fire1"))
-	    {
-	        if (_victim != null && _beginThrow)
-	        {
-	            _beginThrow = false;
-	            var factor = Mathf.Min(_throwTime / MaxThrowTime, 1);
-                ThrowVictim(factor * (MaxThrowForce-MinThrowForce) + MinThrowForce);
-            }
+        if (Input.GetButtonUp("Fire1"))
+        {
+            ThrowingButtonUp();
 
+        }
+
+    }
+
+
+    void ThrowingButtonDown()
+    {
+        if (_victim != null)
+        {
+            _beginThrow = true;
+            _throwTime = 0;
+        }
+        else if (_victimInReach != null)
+        {
+            PickUpVictim();
+        }
+
+   
+    }
+
+    void ThrowingButtonUp()
+    {
+        if (_victim != null && _beginThrow)
+        {
+            _beginThrow = false;
+            var factor = Mathf.Min(_throwTime / MaxThrowTime, 1);
+            ThrowVictim(factor * (MaxThrowForce - MinThrowForce) + MinThrowForce);
         }
     }
 
