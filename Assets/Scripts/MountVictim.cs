@@ -26,6 +26,11 @@ public class MountVictim : MonoBehaviour
         get { return _victim != null || _victimInReach != null; }
     }
 
+    public bool IsCarrying
+    {
+        get { return _victim != null; }
+    }
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -130,6 +135,12 @@ public class MountVictim : MonoBehaviour
     {
 //        _victim.transform.SetParent(gameWorld);
         _victim.Throw(new Vector3((MovementController.LookingRight ? 1:-1) * ThrowForce.x, ThrowForce.y, ThrowForce.z));
+        MountJoint.connectedBody = null;
+        _victim = null;
+    }
+
+    public void DropVictim()
+    {
         MountJoint.connectedBody = null;
         _victim = null;
     }

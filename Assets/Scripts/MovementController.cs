@@ -23,6 +23,8 @@ public class MovementController : MonoBehaviour
     
     private bool _doubleJumpAvailable;
 
+    private Player _player;
+
     public bool LookingRight
     {
         get
@@ -35,12 +37,13 @@ public class MovementController : MonoBehaviour
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        _player = GetComponent<Player>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Jump") && (_isGrounded || _doubleJumpAvailable))
+        if (Input.GetButtonDown("Jump") && (_isGrounded || _doubleJumpAvailable) && !_player.MountVictim.CanThrowSometing)
         {
             _doJump = true;
         }

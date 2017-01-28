@@ -15,7 +15,7 @@ public class CameraFollowY : MonoBehaviour {
 	void Update () {
         Vector3 target = new Vector3(Player.position.x / 2, Player.position.y, this.gameObject.transform.position.z) + Offset;
 
-	    gameObject.transform.position = Smooth(gameObject.transform.position, target, 0.5f);
+	    gameObject.transform.position = Smooth(gameObject.transform.position, target, 0.1f);
 
 		this.gameObject.transform.position = new Vector3 (Player.position.x / 2, Player.position.y, this.gameObject.transform.position.z) + Offset;
 	}
