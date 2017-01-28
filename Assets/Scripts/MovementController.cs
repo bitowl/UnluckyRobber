@@ -43,7 +43,7 @@ public class MovementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Jump") && (_isGrounded || _doubleJumpAvailable) && !_player.MountVictim.CanThrowSometing)
+        if (Input.GetButtonDown("Jump") && (_isGrounded || _doubleJumpAvailable) && !_player.MountVictim.IsCarrying)
         {
             _doJump = true;
         }
@@ -52,6 +52,7 @@ public class MovementController : MonoBehaviour
 
     void FixedUpdate()
     {
+        Debug.Log("grounded:" +_isGrounded + " jump: " + _doJump);
         if (GameManager.instance.GameOver)
         {
             return; // No player updates 
