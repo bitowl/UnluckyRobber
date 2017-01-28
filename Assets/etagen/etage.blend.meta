@@ -18,6 +18,7 @@ ModelImporter:
     100020: Circle
     100022: Cube
     100024: Cube_003
+    100026: brett
     400000: Cube_001
     400002: Cube_002
     400004: Cube_3
@@ -31,6 +32,7 @@ ModelImporter:
     400020: Circle
     400022: Cube
     400024: Cube_003
+    400026: brett
     2300000: Cube_001
     2300002: Cube_002
     2300004: Cube_3
@@ -43,6 +45,7 @@ ModelImporter:
     2300018: Circle
     2300020: Cube
     2300022: Cube_003
+    2300024: brett
     3300000: Cube_001
     3300002: Cube_002
     3300004: Cube_3
@@ -55,6 +58,7 @@ ModelImporter:
     3300018: Circle
     3300020: Cube
     3300022: Cube_003
+    3300024: brett
     4300000: Cube_002
     4300002: Cube_3
     4300004: Cube_4
@@ -67,6 +71,7 @@ ModelImporter:
     4300018: Circle
     4300020: Cube
     4300022: Cube_003
+    4300024: brett
     7400000: Default Take
     9500000: //RootNode
   materials:
