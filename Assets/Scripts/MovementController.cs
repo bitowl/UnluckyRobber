@@ -22,6 +22,8 @@ public class MovementController : MonoBehaviour
     private bool _lookingRight = true;
 
 
+    private bool _doubleJumpAvailable;
+
     // Use this for initialization
     void Start()
     {
@@ -31,7 +33,7 @@ public class MovementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Jump") && _isGrounded)
+        if (Input.GetButtonDown("Jump") && (_isGrounded || _doubleJumpAvailable))
         {
             _doJump = true;
         }
@@ -42,6 +44,10 @@ public class MovementController : MonoBehaviour
         // check if is grounded
         //_isGrounded = Physics.OverlapSphere(GroundCheck.position, GroundCheckRadius, GroundLayerMask);
         _isGrounded = Physics.Raycast(GroundCheck.position, -Vector3.up, GroundDistance + 0.1f);
+        if (_isGrounded)
+        {
+            _doubleJumpAvailable = true;
+        }
 
         float horizontal = Input.GetAxis("Horizontal");
 
@@ -54,7 +60,11 @@ public class MovementController : MonoBehaviour
 
         if (_doJump)
         {
-            _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, _rigidbody.velocity.y + JumpVelocity, _rigidbody.velocity.z);
+            _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, JumpVelocity, _rigidbody.velocity.z);
+            if (!_isGrounded)
+            {
+                _doubleJumpAvailable = false;
+            }
             _doJump = false;
         }
 
