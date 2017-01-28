@@ -20,9 +20,16 @@ public class MovementController : MonoBehaviour
     public bool _isGrounded = false;
     private bool _doJump = false;
     private bool _lookingRight = true;
-
-
+    
     private bool _doubleJumpAvailable;
+
+    public bool LookingRight
+    {
+        get
+        {
+            return _lookingRight;
+        }
+    }
 
     // Use this for initialization
     void Start()

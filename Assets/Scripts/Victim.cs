@@ -7,6 +7,8 @@ public class Victim : MonoBehaviour
 
     public Rigidbody Hip;
     private Transform _followTransform;
+    private bool _throw;
+    private Vector3 _throwForce;
 
 	// Use this for initialization
 	void Start () {
@@ -21,12 +23,22 @@ public class Victim : MonoBehaviour
 	    }
 	}
 
+    void FixedUpdate()
+    {
+        if (_throw)
+        {
+            Debug.Log("THROOOOW FORCE");
+            Hip.AddForce(_throwForce);
+            _throw = false;
+        }
+    }
+
     public void Throw(Vector3 force)
     {
-
         _followTransform = null;
         Hip.isKinematic = false;
-        Hip.AddForce(force);
+        _throwForce = force;
+        _throw = true;
     }
 
     public void PickUp(Transform followTransform)
