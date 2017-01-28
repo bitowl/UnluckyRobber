@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
 	    if (_time < 0)
 	    {
 	        _time = 0;
-            UI.GameOver.gameObject.SetActive(true);
+            UI.GameOver.SetActive(true);
 	    }
 	    UI.Time = (int)_time;
         UI.Score = _score;
@@ -58,5 +58,13 @@ public class GameManager : MonoBehaviour
     public void AddScore(int score)
     {
         _score += score;
+    }
+
+    public void Restart()
+    {
+        UI.GameOver.SetActive(false);
+        // TODO unload scene
+        InitGame();
+        
     }
 }

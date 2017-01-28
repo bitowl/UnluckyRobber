@@ -52,6 +52,10 @@ public class MovementController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (GameManager.instance.GameOver)
+        {
+            return; // No player updates 
+        }
         // check if is grounded
         //_isGrounded = Physics.OverlapSphere(GroundCheck.position, GroundCheckRadius, GroundLayerMask);
         _isGrounded = Physics.Raycast(GroundCheck.position, -Vector3.up, GroundDistance + 0.1f);

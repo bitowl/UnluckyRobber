@@ -5,10 +5,9 @@ using UnityEngine.UI;
 
 public class UI : MonoBehaviour {
 
-
     public Text ScoreText;
     public Text TimeText;
-    public Text GameOver;
+    public GameObject GameOver;
 
     public int Score
     {
