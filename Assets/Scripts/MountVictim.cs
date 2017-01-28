@@ -6,8 +6,8 @@ public class MountVictim : MonoBehaviour
 {
     public Transform gameWorld;
 
-    private Transform _victim;
-    private Transform _victimInReach;
+    private Victim _victim;
+    private Victim _victimInReach;
 
 	// Use this for initialization
 	void Start ()
@@ -36,7 +36,7 @@ public class MountVictim : MonoBehaviour
         if (_victim == null && other.gameObject.layer == 9 && other.GetComponent<Victim>() != null) // victim
         {
             Debug.Log("victim in reach");
-            _victimInReach = other.transform;
+           _victimInReach = other.GetComponent<Victim>();
 
         }
     }
@@ -53,13 +53,15 @@ public class MountVictim : MonoBehaviour
     private void PickUpVictim()
     {
         _victim = _victimInReach;
-        _victim.transform.position = Vector3.zero;
-        _victim.SetParent(transform, false);
+        _victim.PickUp(transform);
+        // _victim.transform.position = Vector3.zero;
+        //   _victim.transform.SetParent(transform, false);
     }
 
     private void ThrowVictim()
     {
-        _victim.SetParent(gameWorld);
+//        _victim.transform.SetParent(gameWorld);
+        _victim.Throw(new Vector3(10, 0, 0));
         _victim = null;
     }
 }
