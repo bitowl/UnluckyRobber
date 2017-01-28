@@ -14,15 +14,17 @@ public class Player : MonoBehaviour
     public Vector3 PunchForce;
     public Animator Animator;
 
-	// Use this for initialization
-	void Start ()
-	{
-	    _movementController = GetComponent<MovementController>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-    
+    public Vector3 InitialPosition;
+
+    // Use this for initialization
+    void Start()
+    {
+        _movementController = GetComponent<MovementController>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         if (Input.GetButtonDown("Fire1"))
         {
             if (MountVictim.CanThrowSometing)
@@ -33,7 +35,6 @@ public class Player : MonoBehaviour
             {
                 Punch();
             }
-
         }
         if (Input.GetButtonUp("Fire1"))
         {
@@ -42,7 +43,6 @@ public class Player : MonoBehaviour
                 MountVictim.ThrowingButtonUp();
             }
         }
-
     }
 
     public void Punch()
@@ -54,7 +54,8 @@ public class Player : MonoBehaviour
             var rb = collider.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                rb.AddForce(new Vector3((_movementController.LookingRight ? 1:-1) * PunchForce.x, PunchForce.y, PunchForce.z) );
+                rb.AddForce(new Vector3((_movementController.LookingRight ? 1 : -1) * PunchForce.x, PunchForce.y,
+                    PunchForce.z));
             }
         }
         Debug.Log("punching " + colliders.Length);
@@ -68,7 +69,10 @@ public class Player : MonoBehaviour
             MountVictim.DropVictim();
         }
         GameManager.instance.GameOver = true;
-        
+    }
 
+    public void ResetPlayer()
+    {
+        transform.position = InitialPosition;
     }
 }
