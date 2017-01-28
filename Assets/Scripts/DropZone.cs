@@ -19,7 +19,9 @@ public class DropZone : MonoBehaviour {
         if (other.tag == "Victim")
         {
             Debug.Log("SCORE!");
-            Destroy(other.transform.parent.parent.gameObject);
+            var rat = other.transform.parent.parent.gameObject.AddComponent<RemoveAfterTime>();
+            rat.TimeLeft = 10;
+//            Destroy(other.transform.parent.parent.gameObject);
             GameManager.instance.AddScore(1);
         }
     }
