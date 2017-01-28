@@ -5,13 +5,18 @@ using UnityEngine;
 [RequireComponent(typeof(MovementController))]
 public class Player : MonoBehaviour
 {
+    private MovementController _movementController;
 
     public MountVictim MountVictim;
     public Transform PunchPoint;
+    public float PunchRadius;
+    public LayerMask PunchableLayerMask;
+    public Vector3 PunchForce;
 
 	// Use this for initialization
 	void Start ()
 	{
+	    _movementController = GetComponent<MovementController>();
 	}
 	
 	// Update is called once per frame
@@ -41,7 +46,16 @@ public class Player : MonoBehaviour
 
     public void Punch()
     {
-        
+        var colliders = Physics.OverlapSphere(PunchPoint.position, PunchRadius, PunchableLayerMask);
+        foreach (var collider in colliders)
+        {
+            var rb = collider.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.AddForce(new Vector3((_movementController.LookingRight ? 1:-1) * PunchForce.x, PunchForce.y, PunchForce.z) );
+            }
+        }
+        Debug.Log("punching " + colliders.Length);
     }
 
     public void Die()
