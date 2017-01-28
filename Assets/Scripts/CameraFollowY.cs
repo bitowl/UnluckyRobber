@@ -13,6 +13,6 @@ public class CameraFollowY : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		this.gameObject.transform.position = new Vector3 (Player.position.x / 2, Player.position.y + 1.5f, this.gameObject.transform.position.z);
+		this.gameObject.transform.position = new Vector3 (Player.position.x / 2, Player.position.y, this.gameObject.transform.position.z) + Offset;
 	}
 }
