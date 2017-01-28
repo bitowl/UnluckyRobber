@@ -20,6 +20,7 @@ public class DropZone : MonoBehaviour {
         {
             Debug.Log("SCORE!");
             Destroy(other.transform.parent.parent.gameObject);
+            GameManager.instance.AddScore(1);
         }
     }
 }
