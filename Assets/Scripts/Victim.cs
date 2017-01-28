@@ -31,12 +31,33 @@ public class Victim : MonoBehaviour
 
     public void Throw(Vector3 force)
     {
+        setLayerRecursively(gameObject, LayerMask.NameToLayer("Victims"));
         _throwForce = force;
         _throw = true;
     }
 
     public void PickUp(Transform followTransform)
     {
+        setLayerRecursively(gameObject, LayerMask.NameToLayer("NoCollision"));
+    }
+
+    private void setLayerRecursively(GameObject obj, int newLayer)
+    {
+        if (null == obj)
+        {
+            return;
+        }
+
+        obj.layer = newLayer;
+
+        foreach (Transform child in obj.transform)
+        {
+            if (null == child)
+            {
+                continue;
+            }
+            setLayerRecursively(child.gameObject, newLayer);
+        }
     }
 
 }

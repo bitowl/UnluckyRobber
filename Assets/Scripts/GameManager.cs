@@ -6,8 +6,14 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
     public UI UI;
+
+    public int TimePerGame = 100;
+
+    public bool GameOver
+    {
+        get { return _time <= 0; }
+    }
 
     private int _score;
     private float _time;
@@ -30,7 +36,7 @@ public class GameManager : MonoBehaviour
     // Initializes the game for each level.
     void InitGame()
     {
-        _time = 100;
+        _time = TimePerGame;
 
     }
 	
@@ -38,6 +44,11 @@ public class GameManager : MonoBehaviour
 	void Update ()
 	{
 	    _time -= Time.deltaTime;
+	    if (_time < 0)
+	    {
+	        _time = 0;
+            UI.GameOver.gameObject.SetActive(true);
+	    }
 	    UI.Time = (int)_time;
         UI.Score = _score;
 
