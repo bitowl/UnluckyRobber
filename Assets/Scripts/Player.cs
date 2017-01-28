@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
 
     public MountVictim MountVictim;
+    public Transform PunchPoint;
 
 	// Use this for initialization
 	void Start ()
@@ -24,7 +25,7 @@ public class Player : MonoBehaviour
             }
             else
             {
-                // TODO: punch
+                Punch();
             }
 
         }
@@ -36,6 +37,11 @@ public class Player : MonoBehaviour
             }
         }
 
+    }
+
+    public void Punch()
+    {
+        
     }
 
     public void Die()
