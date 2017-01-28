@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public UI UI;
+    public Player Player;
 
     public int TimePerGame = 100;
 
@@ -56,7 +57,7 @@ public class GameManager : MonoBehaviour
     void InitGame(string levelName)
     {
         _time = TimePerGame;
-        GameObject.Find("player").GetComponent<Player>().ResetPlayer();
+        Player.ResetPlayer();
 
         var uiLoaded = false;
         var nextSceneLoaded = false;
@@ -99,7 +100,7 @@ public class GameManager : MonoBehaviour
             if (_time < 0)
             {
                 _time = 0;
-                GameObject.Find("player").GetComponent<Player>().Die();
+                Player.Die();
             }
         }
         UI.Time = (int) _time;
