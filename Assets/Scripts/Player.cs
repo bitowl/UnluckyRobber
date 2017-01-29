@@ -89,5 +89,29 @@ public class Player : MonoBehaviour
     public void ResetPlayer()
     {
         transform.position = InitialPosition;
+
+        foreach (var body in gameObject.GetComponentsInChildren<Rigidbody>())
+        {
+            Debug.Log("kill " + body);
+            body.isKinematic = true;
+        }
+
+        foreach (var collider in gameObject.GetComponentsInChildren<Collider>())
+        {
+            collider.enabled = false;
+        }
+        gameObject.GetComponentInChildren<Animator>().enabled = true;
+
+        // enable everything on the player themself
+        foreach (var body in gameObject.GetComponents<Rigidbody>())
+        {
+            body.isKinematic = false;
+        }
+
+        foreach (var collider in gameObject.GetComponents<Collider>())
+        {
+            collider.enabled = true;
+        }
+
     }
 }
