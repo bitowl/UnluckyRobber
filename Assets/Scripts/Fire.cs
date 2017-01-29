@@ -27,7 +27,6 @@ public class Fire : MonoBehaviour
 	}
     void OnTriggerEnter(Collider other)
     {
-        //        Debug.Log("ON TRIGGER ENTER" + other);
         if (other.tag == "Player")
         {
             _inFire = other.GetComponent<Player>();
@@ -38,7 +37,6 @@ public class Fire : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        //        Debug.Log("ON TRIGGER ENTER" + other);
         if (other.tag == "Player")
         {
             if (_inFire == other.GetComponent<Player>())

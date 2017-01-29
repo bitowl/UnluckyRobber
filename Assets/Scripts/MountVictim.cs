@@ -118,7 +118,7 @@ public class MountVictim : MonoBehaviour
 
     private void PickUpVictim()
     {
-
+        Player._soundPlayer.PickUp();
         Debug.Log("pick up victim");
         _victim = _victimInReach;
 
@@ -133,6 +133,7 @@ public class MountVictim : MonoBehaviour
 
     private void ThrowVictim(Vector3 ThrowForce)
     {
+        Player._soundPlayer.Throw();
         Player.Animator.SetTrigger("throw");
 //        _victim.transform.SetParent(gameWorld);
         _victim.Throw(new Vector3((MovementController.LookingRight ? 1:-1) * ThrowForce.x, ThrowForce.y, ThrowForce.z));

@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
     void InitGame(string levelName)
     {
         _time = TimePerGame;
+        _score = 0;
         Player.ResetPlayer();
 
         var uiLoaded = false;
@@ -111,6 +112,8 @@ public class GameManager : MonoBehaviour
     public void AddScore(int score)
     {
         _score += score;
+        Player._soundPlayer.Score();
+
     }
 
     public void Restart()
