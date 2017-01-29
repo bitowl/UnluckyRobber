@@ -149,6 +149,10 @@ public class Player : MonoBehaviour
 
     public void HurtFromPunch()
     {
+        if (MountVictim.IsCarrying)
+        {
+            MountVictim.DropVictim();
+        }
         _movementController.HurtFromPunch();
     }
 }

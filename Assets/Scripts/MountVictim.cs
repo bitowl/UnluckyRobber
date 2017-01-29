@@ -143,6 +143,7 @@ public class MountVictim : MonoBehaviour
 
     public void DropVictim()
     {
+        _victim.Drop();
         MountJoint.connectedBody = null;
         _victim = null;
     }

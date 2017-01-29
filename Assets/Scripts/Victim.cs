@@ -38,6 +38,11 @@ public class Victim : MonoBehaviour
         Thrower = thrower;
     }
 
+    public void Drop()
+    {
+        setLayerRecursively(gameObject, LayerMask.NameToLayer("Victims"));
+    }
+
     public void PickUp(Transform followTransform)
     {
         setLayerRecursively(gameObject, LayerMask.NameToLayer("NoCollision"));
