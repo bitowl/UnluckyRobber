@@ -4,21 +4,34 @@ using UnityEngine;
 
 public class RestartButton : MonoBehaviour
 {
+    public float WaitTime = 1;
+    private float _alreadyWaited = 0;
+
     private string[] _continueKeys =
     {
         "P1 A", "P1 B", "P1 X", "P1 Y",
-        "P2 A", "P2 B", "P2 X", "P2 Y" 
+        "P2 A", "P2 B", "P2 X", "P2 Y"
     };
+
+    public void Start()
+    {
+        _alreadyWaited = 0;
+    }
+
     public void Update()
     {
+        _alreadyWaited += Time.deltaTime;
         foreach (var key in _continueKeys)
         {
             if (Input.GetButtonDown(key))
             {
-                Restart();
+                if (_alreadyWaited >= WaitTime) { 
+                    Restart();
+                }
             }
         }
     }
+
     public void Restart()
     {
         GameManager.instance.Restart();
