@@ -565,9 +565,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d02faf6b0e591ec45ac469552adf37af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dampTime: 0.4
+  dampTime: 0.25
   target1: {fileID: 684561629}
   target2: {fileID: 1184019191}
   OffsetY: 0
   MinDistance: 8
   MaxDistance: 20
+  MinY: -2
+  MinX: -20
+  AdditionalDistance: 1

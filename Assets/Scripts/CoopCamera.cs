@@ -24,6 +24,10 @@ public class CoopCamera : MonoBehaviour {
     public float MinDistance = 10f;
     public float MaxDistance = 10f;
 
+    public float MinY = -2;
+    public float MinX;
+    public float AdditionalDistance = 1;
+
     // Use this for initialization
     void Start()
     {
@@ -80,7 +84,7 @@ public class CoopCamera : MonoBehaviour {
               CamOffset = distance.x * 0.3f;
           }*/
 
-        camDistance = Mathf.Sqrt(distance.x*distance.x + distance.y*distance.y);
+        camDistance = Mathf.Sqrt(distance.x*distance.x + distance.y*distance.y) + AdditionalDistance;
 
         if (camDistance >= MaxDistance)
             camDistance = MaxDistance;
@@ -89,6 +93,18 @@ public class CoopCamera : MonoBehaviour {
 
         MidX = (target2.position.x + target1.position.x) / 2;
         MidY = (target2.position.y + target1.position.y + OffsetY) / 2;
+
+        if (MidY < camDistance / 2 + MinY)
+        {
+            MidY = camDistance / 2 + MinY;
+        }
+
+        if (MidX < camDistance / 2 + MinX)
+        {
+            MidX = camDistance / 2 + MinX;
+        }
+
+
         MidZ = (target2.position.z + target1.position.z) / 2;
         Midpoint = new Vector3(MidX, MidY, MidZ);
         if (target1)

@@ -46,6 +46,12 @@ public class StartScreen : MonoBehaviour
                 StartGame();
             }
         }
+
+        // quit game
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     void Toggle()
