@@ -38,6 +38,11 @@ public class MovementController : MonoBehaviour
         }
     }
 
+    public bool StillHurt
+    {
+        get { return _hurtTimeLeft > 0; }
+    }
+
     // Use this for initialization
     void Start()
     {

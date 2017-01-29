@@ -143,6 +143,7 @@ public class MountVictim : MonoBehaviour
 
     public void DropVictim()
     {
+        Player.Animator.SetTrigger("throw");
         _victim.Drop();
         MountJoint.connectedBody = null;
         _victim = null;

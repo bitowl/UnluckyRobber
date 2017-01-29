@@ -84,11 +84,16 @@ public class Player : MonoBehaviour
         {
             if (collider.tag == "Player")
             {
-                if (collider.GetComponent<Player>() == this)
+                var player = collider.GetComponent<Player>();
+                if (player == this)
                 {
                     continue;
                 }
-                collider.GetComponent<Player>().HurtFromPunch();
+                if (player._movementController.StillHurt)
+                {
+                    continue;
+                }
+                player.HurtFromPunch();
                 force = PunchForceAgainstPlayers;
 //                Debug.Log("COLLIDER: " + collider);
                 //              continue;
