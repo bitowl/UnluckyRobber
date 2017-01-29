@@ -6,7 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/startscreen.unity
+  - enabled: 1
     path: Assets/Scenes/Game.unity
+  - enabled: 1
+    path: Assets/Scenes/GameCoop.unity
   - enabled: 1
     path: Assets/Scenes/TestLevel_Stefan.unity
   - enabled: 1

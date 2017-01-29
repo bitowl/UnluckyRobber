@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        DontDestroyOnLoad(gameObject);
+      //  DontDestroyOnLoad(gameObject);
     }
 
     void Start()
@@ -73,13 +73,7 @@ public class GameManager : MonoBehaviour
     // Initializes the game for each level.
     void InitGame(string levelName)
     {
-        _time = TimePerGame;
-        _score1 = 0;
-        _score2 = 0;
-        _currentVictims = 0;
-        Player1.ResetPlayer();
-        Player2.ResetPlayer();
-        
+
 
         var uiLoaded = false;
         var nextSceneLoaded = false;
@@ -109,8 +103,24 @@ public class GameManager : MonoBehaviour
             
         }
         _currentLevel = levelName;
+
+        _time = TimePerGame;
+        _score1 = 0;
+        _score2 = 0;
+        _currentVictims = 0;
+
         Debug.Log(SceneManager.GetActiveScene().name);
 //        SceneManager.LoadScene("TestLevel_Stefan", LoadSceneMode.Additive);
+    }
+
+    public void StartLevelAfterLoad()
+    {
+
+        Player1.ResetPlayer();
+        if (Coop)
+        {
+            Player2.ResetPlayer();
+        }
     }
 
     // Update is called once per frame
@@ -118,7 +128,11 @@ public class GameManager : MonoBehaviour
     {
         if (UI == null)
         {
-            UI = GameObject.Find("UI").GetComponent<UI>();
+            var ui = GameObject.Find("UI");
+            if (ui != null)
+            {
+                UI = ui.GetComponent<UI>();
+            }
         }
 
         if (!_gameOver)
@@ -138,14 +152,24 @@ public class GameManager : MonoBehaviour
         }
 
        // Debug.Log(_score + "/" + _currentVictims);
-        if (_score1 + _score2 >= _currentVictims)
+        if (_score1 + _score2 >= _currentVictims && _currentVictims != 0)
         {
             Win = true;
         }
 
-        UI.Time = (int) _time;
-        UI.Score1 = _score1;
-        UI.Score2 = _score2;
+        if (UI)
+        {
+            UI.Time = (int)_time;
+            UI.Score1 = _score1;
+            UI.Score2 = _score2;
+        }
+
+
+        // quit game
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("startscreen");
+        }
     }
 
 
