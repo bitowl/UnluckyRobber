@@ -1724,6 +1724,7 @@ MonoBehaviour:
   DeathSound: {fileID: 8300000, guid: 93a4eeba6e489f94a8c12c1e4bc71bc3, type: 3}
   HurtSound: {fileID: 8300000, guid: 93a4eeba6e489f94a8c12c1e4bc71bc3, type: 3}
   ScoreSound: {fileID: 8300000, guid: 5d8652191f1bd984b9db5b9d0d8480e5, type: 3}
+  TrapSound: {fileID: 8300000, guid: b34c59c019383dd488ab175bbdb95b12, type: 3}
 --- !u!135 &135444267235391760
 SphereCollider:
   m_ObjectHideFlags: 1

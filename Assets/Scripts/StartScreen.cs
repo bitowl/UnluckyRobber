@@ -10,9 +10,13 @@ public class StartScreen : MonoBehaviour
     public Image OnePlayer;
     public Image TwoPlayer;
 
-    public float _player1;
-    public float _player2;
-    public bool _twoPlayers = false;
+    private float _player1;
+    private float _player2;
+    private bool _twoPlayers = false;
+
+    public AudioClip ButtonSound;
+    public AudioClip StartSound;
+    private AudioSource _audioSource;
 
 
     private string[] _startKeys =
@@ -21,9 +25,10 @@ public class StartScreen : MonoBehaviour
         "P2 A", "P2 B", "P2 X", "P2 Y"
     };
     // Use this for initialization
-    void Start () {
-		
-	}
+    void Start ()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -59,11 +64,13 @@ public class StartScreen : MonoBehaviour
         _twoPlayers = !_twoPlayers;
         OnePlayer.color = new Color(1, 1, 1, _twoPlayers ? 0.5f: 1);
         TwoPlayer.color = new Color(1, 1, 1, _twoPlayers ? 1 : 0.5f);
-
+        _audioSource.PlayOneShot(ButtonSound);
     }
 
     void StartGame()
     {
+
+        _audioSource.PlayOneShot(StartSound);
         if (_twoPlayers)
         {
             SceneManager.LoadScene("GameCoop");
@@ -72,6 +79,7 @@ public class StartScreen : MonoBehaviour
         {
             SceneManager.LoadScene("Game");
         }
+
     }
 
     bool ShouldToggle(float a, float b)

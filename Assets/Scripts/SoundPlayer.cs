@@ -15,6 +15,7 @@ public class SoundPlayer : MonoBehaviour
     public AudioClip DeathSound;
     public AudioClip HurtSound;
     public AudioClip ScoreSound;
+    public AudioClip TrapSound;
 
 	// Use this for initialization
 	void Start ()
@@ -61,5 +62,10 @@ public class SoundPlayer : MonoBehaviour
     public void Score()
     {
         _audioSource.PlayOneShot(ScoreSound);
+    }
+
+    public void Trap()
+    {
+        _audioSource.PlayOneShot(TrapSound);
     }
 }
