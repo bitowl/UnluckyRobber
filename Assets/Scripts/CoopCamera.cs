@@ -21,6 +21,8 @@ public class CoopCamera : MonoBehaviour {
     public float OffsetY = 1.5f;
 
     private Camera _camera;
+    public float MinDistance = 10f;
+    public float MaxDistance = 10f;
 
     // Use this for initialization
     void Start()
@@ -34,15 +36,12 @@ public class CoopCamera : MonoBehaviour {
     void Update()
     {
         distance = target1.position - target2.position;
-        if (camDistance >= 19.0f)
-            camDistance = 19.0f;
-        if (camDistance <= 10.0f)
-            camDistance = 10.0f;
+
         if (distance.x < 0)
             distance.x = distance.x * -1;
         if (distance.z < 0)
             distance.z = distance.z * -1;
-        if (target1.position.x < (transform.position.x - bounds))
+/*        if (target1.position.x < (transform.position.x - bounds))
         {
             Vector3 pos = target1.position;
             pos.x = transform.position.x - bounds;
@@ -65,21 +64,29 @@ public class CoopCamera : MonoBehaviour {
             Vector3 pos = target2.position;
             pos.x = transform.position.x + bounds;
             target2.position = pos;
-        }
-        if (distance.x > 15.0f)
-        {
-            CamOffset = distance.x * 0.3f;
-            if (CamOffset >= 8.5f)
-                CamOffset = 8.5f;
-        }
-        else if (distance.x < 14.0f)
-        {
-            CamOffset = distance.x * 0.3f;
-        }
-        else if (distance.z < 14.0f)
-        {
-            CamOffset = distance.x * 0.3f;
-        }
+        }*/
+        /*  if (distance.x > 15.0f)
+          {
+              CamOffset = distance.x * 0.3f;
+              if (CamOffset >= 8.5f)
+                  CamOffset = 8.5f;
+          }
+          else if (distance.x < 14.0f)
+          {
+              CamOffset = distance.x * 0.3f;
+          }
+          else if (distance.z < 14.0f)
+          {
+              CamOffset = distance.x * 0.3f;
+          }*/
+
+        camDistance = Mathf.Sqrt(distance.x*distance.x + distance.y*distance.y);
+
+        if (camDistance >= MaxDistance)
+            camDistance = MaxDistance;
+        if (camDistance <= MinDistance)
+            camDistance = MinDistance;
+
         MidX = (target2.position.x + target1.position.x) / 2;
         MidY = (target2.position.y + target1.position.y + OffsetY) / 2;
         MidZ = (target2.position.z + target1.position.z) / 2;

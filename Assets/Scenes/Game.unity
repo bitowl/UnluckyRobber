@@ -186,11 +186,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4471264765173808, guid: 15a2428ebf1ab494d97d98eb64576f00, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.02419224
+      value: 0.024192238
       objectReference: {fileID: 0}
     - target: {fileID: 4471264765173808, guid: 15a2428ebf1ab494d97d98eb64576f00, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -0.02419359
+      value: -0.024193589
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 15a2428ebf1ab494d97d98eb64576f00, type: 2}
@@ -321,23 +321,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4471264765173808, guid: 15a2428ebf1ab494d97d98eb64576f00, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.70669276
-      objectReference: {fileID: 0}
-    - target: {fileID: 4471264765173808, guid: 15a2428ebf1ab494d97d98eb64576f00, type: 2}
-      propertyPath: m_LocalRotation.y
       value: 0.7066928
       objectReference: {fileID: 0}
     - target: {fileID: 4471264765173808, guid: 15a2428ebf1ab494d97d98eb64576f00, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.7066929
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471264765173808, guid: 15a2428ebf1ab494d97d98eb64576f00, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.024192236
+      value: 0.024192238
       objectReference: {fileID: 0}
     - target: {fileID: 4471264765173808, guid: 15a2428ebf1ab494d97d98eb64576f00, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -0.024193587
+      value: -0.024193589
       objectReference: {fileID: 0}
     - target: {fileID: 1535631750422466, guid: 15a2428ebf1ab494d97d98eb64576f00, type: 2}
       propertyPath: m_Name
-      value: player (1)
+      value: player2
       objectReference: {fileID: 0}
     - target: {fileID: 114625578893290520, guid: 15a2428ebf1ab494d97d98eb64576f00,
         type: 2}
@@ -561,7 +561,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d02faf6b0e591ec45ac469552adf37af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dampTime: 0.15
+  dampTime: 0.4
   target1: {fileID: 684561629}
   target2: {fileID: 1184019191}
-  OffsetY: 1.5
+  OffsetY: 0
+  MinDistance: 8
+  MaxDistance: 20
