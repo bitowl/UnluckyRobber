@@ -11,7 +11,7 @@ public class Victim : MonoBehaviour
 
 	// Use this for initialization
 	void Start () {
-		
+		GameManager.instance.RegisterVictim();
 	}
 	
 	// Update is called once per frame
