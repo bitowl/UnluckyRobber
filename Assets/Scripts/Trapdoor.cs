@@ -17,7 +17,7 @@ public class Trapdoor : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-//        Debug.Log("ON TRIGGER ENTER" + other);
+        Debug.Log("ON TRIGGER ENTER" + other);
         if (other.tag == "Player")
         {
             Open();
