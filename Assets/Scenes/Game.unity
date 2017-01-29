@@ -119,7 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e25e0afec0e3ca4ebedf0797ed97d2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 684561624}
+  Player1: {fileID: 0}
+  Player2: {fileID: 1184019186}
   _coop: 1
   TimePerGame: 100
   InitialLevel: TestLevel_Stefan
@@ -262,17 +263,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!114 &684561624 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114625578893290520, guid: 15a2428ebf1ab494d97d98eb64576f00,
-    type: 2}
-  m_PrefabInternal: {fileID: 293422679}
-  m_Script: {fileID: 11500000, guid: 39e13716031db3e438e67a4ee31163a4, type: 3}
 --- !u!4 &684561629 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4386803121067592, guid: 15a2428ebf1ab494d97d98eb64576f00,
     type: 2}
   m_PrefabInternal: {fileID: 293422679}
+--- !u!114 &1184019186 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114625578893290520, guid: 15a2428ebf1ab494d97d98eb64576f00,
+    type: 2}
+  m_PrefabInternal: {fileID: 1340521264}
+  m_Script: {fileID: 11500000, guid: 39e13716031db3e438e67a4ee31163a4, type: 3}
 --- !u!4 &1184019191 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4386803121067592, guid: 15a2428ebf1ab494d97d98eb64576f00,

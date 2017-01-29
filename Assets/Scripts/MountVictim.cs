@@ -136,7 +136,7 @@ public class MountVictim : MonoBehaviour
         Player._soundPlayer.Throw();
         Player.Animator.SetTrigger("throw");
 //        _victim.transform.SetParent(gameWorld);
-        _victim.Throw(new Vector3((MovementController.LookingRight ? 1:-1) * ThrowForce.x, ThrowForce.y, ThrowForce.z));
+        _victim.Throw(new Vector3((MovementController.LookingRight ? 1:-1) * ThrowForce.x, ThrowForce.y, ThrowForce.z), Player);
         MountJoint.connectedBody = null;
         _victim = null;
     }

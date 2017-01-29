@@ -8,7 +8,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     protected UI UI;
-    public Player Player;
+    public Player Player1;
+    public Player Player2;
     [SerializeField]
     protected bool _coop;
 
@@ -41,7 +42,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private int _score;
+    private int _score1;
+    private int _score2;
     private float _time;
 
     public string InitialLevel;
@@ -75,9 +77,12 @@ public class GameManager : MonoBehaviour
     void InitGame(string levelName)
     {
         _time = TimePerGame;
-        _score = 0;
+        _score1 = 0;
+        _score2 = 0;
         _currentVictims = 0;
-        Player.ResetPlayer();
+        Player1.ResetPlayer();
+        Player2.ResetPlayer();
+        
 
         var uiLoaded = false;
         var nextSceneLoaded = false;
@@ -120,18 +125,20 @@ public class GameManager : MonoBehaviour
             if (_time < 0)
             {
                 _time = 0;
-                Player.Die("You ran out of time");
+                Player1.Die("You ran out of time");
+                // TODO: player2 (?)
             }
         }
 
        // Debug.Log(_score + "/" + _currentVictims);
-        if (_score >= _currentVictims)
+        if (_score1 + _score2 >= _currentVictims)
         {
             Win = true;
         }
 
         UI.Time = (int) _time;
-        UI.Score = _score;
+        UI.Score1 = _score1;
+        UI.Score2 = _score2;
     }
 
 
@@ -140,11 +147,27 @@ public class GameManager : MonoBehaviour
         _currentVictims++;
     }
 
-    public void AddScore(int score)
+    public void AddScore(Victim victim, int score)
     {
-        _score += score;
-        Player._soundPlayer.Score();
+        if (victim.Thrower == Player1)
+        {
+            AddScore1(score);
+        } else if (victim.Thrower == Player2)
+        {
+            AddScore2(score);
+        }
+    }
 
+    public void AddScore1(int score)
+    {
+        _score1 += score;
+        Player1._soundPlayer.Score();
+    }
+
+    public void AddScore2(int score)
+    {
+        _score2 += score;
+        Player2._soundPlayer.Score();
     }
 
     public void Restart()

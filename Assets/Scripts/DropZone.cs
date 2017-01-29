@@ -22,7 +22,9 @@ public class DropZone : MonoBehaviour {
             var rat = other.transform.parent.parent.gameObject.AddComponent<RemoveAfterTime>();
             rat.TimeLeft = 10;
 //            Destroy(other.transform.parent.parent.gameObject);
-            GameManager.instance.AddScore(1);
+
+            
+            GameManager.instance.AddScore(other.GetComponent<Victim>(), 1);
         }
     }
 }

@@ -6,13 +6,19 @@ using UnityEngine.UI;
 public class UI : MonoBehaviour {
 
     public Text ScoreText;
+    public Text Score2Text;
     public Text TimeText;
     public GameObject GameOver;
     public GameObject YouWon;
 
-    public int Score
+    public int Score1
     {
         set { ScoreText.text = "Score: " + value; }
+    }
+
+    public int Score2
+    {
+        set { Score2Text.text = "Score: " + value; }
     }
 
     public int Time
@@ -25,7 +31,7 @@ public class UI : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
+        Score2Text.gameObject.SetActive(GameManager.instance.Coop);
 	}
 	
 	// Update is called once per frame

@@ -8,6 +8,7 @@ public class Victim : MonoBehaviour
     public Rigidbody Hip;
     private bool _throw;
     private Vector3 _throwForce;
+    public Player Thrower;
 
 	// Use this for initialization
 	void Start () {
@@ -29,11 +30,12 @@ public class Victim : MonoBehaviour
         }
     }
 
-    public void Throw(Vector3 force)
+    public void Throw(Vector3 force, Player thrower)
     {
         setLayerRecursively(gameObject, LayerMask.NameToLayer("Victims"));
         _throwForce = force;
         _throw = true;
+        Thrower = thrower;
     }
 
     public void PickUp(Transform followTransform)
