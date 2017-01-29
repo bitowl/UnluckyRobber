@@ -65,7 +65,7 @@ public class MovementController : MonoBehaviour
     void FixedUpdate()
     {
         // Debug.Log("grounded:" +_isGrounded + " jump: " + _doJump);
-        if (GameManager.instance.GameOver || _hurtTimeLeft > 0)
+        if (GameManager.instance.GameOver || _hurtTimeLeft > 0 || _player._respawnTimeLeft > 0)
         {
             if (_hurtTimeLeft > 0)
             {

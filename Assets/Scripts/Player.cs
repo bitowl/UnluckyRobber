@@ -27,6 +27,9 @@ public class Player : MonoBehaviour
 
     public ParticleSystem[] FireParticles;
 
+    public float RespawnTime = 2;
+    protected internal float _respawnTimeLeft = 0;
+
     // Use this for initialization
     void Start()
     {
@@ -57,6 +60,15 @@ public class Player : MonoBehaviour
                 {
                     MountVictim.ThrowingButtonUp();
                 }
+            }
+        }
+
+        if (_respawnTimeLeft > 0)
+        {
+            _respawnTimeLeft -= Time.deltaTime;
+            if (_respawnTimeLeft <= 0)
+            {
+                ResetPlayer();
             }
         }
     }
@@ -118,7 +130,15 @@ public class Player : MonoBehaviour
         {
             MountVictim.DropVictim();
         }
-        GameManager.instance.GameOver = true;
+
+        if (GameManager.instance.Coop)
+        {
+            _respawnTimeLeft = RespawnTime;
+        }
+        else
+        {
+            GameManager.instance.GameOver = true;
+        }
     }
 
     public void ResetPlayer()
@@ -135,6 +155,9 @@ public class Player : MonoBehaviour
             collider.enabled = false;
         }
         gameObject.GetComponentInChildren<Animator>().enabled = true;
+
+        gameObject.SetActive(false);
+        gameObject.SetActive(true);
     }
 
     public void Burn()

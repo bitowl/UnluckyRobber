@@ -67,10 +67,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         InitGame(InitialLevel);
-        if (UI == null)
-        {
-            UI = GameObject.Find("UI").GetComponent<UI>();
-        }
+
     }
 
     // Initializes the game for each level.
@@ -119,13 +116,23 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (UI == null)
+        {
+            UI = GameObject.Find("UI").GetComponent<UI>();
+        }
+
         if (!_gameOver)
         {
             _time -= Time.deltaTime;
             if (_time < 0)
             {
                 _time = 0;
-                Player1.Die("You ran out of time");
+                if (Coop)
+                {
+                    GameOver = true;
+                } else { 
+                    Player1.Die("You ran out of time");
+                }
                 // TODO: player2 (?)
             }
         }
@@ -173,7 +180,6 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         GameOver = false;
-        // TODO unload scene
         InitGame(_currentLevel);
     }
 }
