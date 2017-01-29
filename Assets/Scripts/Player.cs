@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
 
     public Vector3 InitialPosition;
 
+    public string Throw = "P1 B";
+
     // Use this for initialization
     void Start()
     {
@@ -25,7 +27,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown(Throw))
         {
             if (MountVictim.CanThrowSometing)
             {
@@ -36,7 +38,7 @@ public class Player : MonoBehaviour
                 Punch();
             }
         }
-        if (Input.GetButtonUp("Fire1"))
+        if (Input.GetButtonUp(Throw))
         {
             if (MountVictim.CanThrowSometing)
             {
