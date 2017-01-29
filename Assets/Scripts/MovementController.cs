@@ -26,8 +26,6 @@ public class MovementController : MonoBehaviour
 
     private Player _player;
 
-    public string Horizontal = "P1 Horizontal";
-    public string Jump = "P1 A";
 
     public bool LookingRight
     {
@@ -47,9 +45,16 @@ public class MovementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown(Jump) && (_isGrounded || _doubleJumpAvailable) && !_player.MountVictim.IsCarrying)
+        if ((_isGrounded || _doubleJumpAvailable) && !_player.MountVictim.IsCarrying)
         {
-            _doJump = true;
+            foreach (var JumpButton in _player.Jump)
+            {
+
+                if (Input.GetButtonDown(JumpButton))
+                {
+                    _doJump = true;
+                }
+            }
         }
 
     }
@@ -69,7 +74,7 @@ public class MovementController : MonoBehaviour
             _doubleJumpAvailable = true;
         }
 
-        float horizontal = Input.GetAxis(Horizontal);
+        float horizontal = Input.GetAxis(_player.Horizontal);
 
         var speed = _player.MountVictim.IsCarrying ? MaxSpeedCarrying : MaxSpeed;
 

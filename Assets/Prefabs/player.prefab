@@ -968,7 +968,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1565975826693418}
-  m_LocalRotation: {x: 0.7066928, y: 0.7066929, z: 0.02419225, w: -0.0241936}
+  m_LocalRotation: {x: 0.70669276, y: 0.7066928, z: 0.024192244, w: -0.024193594}
   m_LocalPosition: {x: -0.18685994, y: 0.010557107, z: 0.034074783}
   m_LocalScale: {x: 1, y: 1, z: 1.0000293}
   m_Children: []
@@ -1653,8 +1653,6 @@ MonoBehaviour:
   MaxSpeed: 8
   MaxSpeedCarrying: 5
   _isGrounded: 0
-  Horizontal: P1 Horizontal
-  Jump: P1 A
 --- !u!114 &114625578893290520
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1676,7 +1674,13 @@ MonoBehaviour:
   PunchForce: {x: 400, y: 0, z: 0}
   Animator: {fileID: 95018921514945336}
   InitialPosition: {x: -8.59, y: -0.279, z: 0}
-  Throw: P1 B
+  Jump:
+  - P1 A
+  - P1 Y
+  Throw:
+  - P1 B
+  - P1 X
+  Horizontal: P1 Horizontal
   FireParticles:
   - {fileID: 198880343018445742}
   - {fileID: 198173737332004172}
