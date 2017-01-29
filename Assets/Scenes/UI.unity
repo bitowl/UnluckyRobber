@@ -261,7 +261,7 @@ RectTransform:
   m_LocalScale: {x: 0.9999926, y: 0.9999926, z: 0.9999926}
   m_Children: []
   m_Father: {fileID: 2058707769}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -337,7 +337,7 @@ RectTransform:
   - {fileID: 544798904}
   - {fileID: 1893901446}
   m_Father: {fileID: 2058707769}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -914,7 +914,7 @@ RectTransform:
   m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 0.9999999}
   m_Children: []
   m_Father: {fileID: 2058707769}
-  m_RootOrder: 1
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -1077,7 +1077,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2058707769}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -1279,7 +1279,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1425376222
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1295,7 +1295,7 @@ RectTransform:
   - {fileID: 300456545}
   - {fileID: 2070007530}
   m_Father: {fileID: 2058707769}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1332,7 +1332,7 @@ RectTransform:
   - {fileID: 1305923482}
   - {fileID: 535442506}
   m_Father: {fileID: 2058707769}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1648,12 +1648,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1156740375}
-  - {fileID: 987143985}
   - {fileID: 456965391}
   - {fileID: 1441132459}
   - {fileID: 523068032}
   - {fileID: 1425376222}
+  - {fileID: 1156740375}
+  - {fileID: 987143985}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1678,6 +1678,8 @@ MonoBehaviour:
   TimeText: {fileID: 456965392}
   GameOver: {fileID: 1441132458}
   YouWon: {fileID: 523068031}
+  BlueWins: {fileID: 523068031}
+  RedWins: {fileID: 1425376221}
 --- !u!82 &2058707771
 AudioSource:
   m_ObjectHideFlags: 0

@@ -10,6 +10,8 @@ public class UI : MonoBehaviour {
     public Text TimeText;
     public GameObject GameOver;
     public GameObject YouWon;
+    public GameObject BlueWins;
+    public GameObject RedWins;
 
     public int Score1
     {

@@ -27,8 +27,15 @@ public class GameManager : MonoBehaviour
         set
         {
             _gameOver = value;
-            UI.GameOver.SetActive(_gameOver);
-            UI.YouWon.SetActive(false);
+            if (Coop)
+            {
+                CoopEnd(value);
+            }
+            else
+            {
+                UI.GameOver.SetActive(_gameOver);
+                UI.YouWon.SetActive(false);
+            }
         }
     }
 
@@ -37,8 +44,16 @@ public class GameManager : MonoBehaviour
         set
         {
             _gameOver = value;
-            UI.YouWon.SetActive(value);
-            UI.GameOver.SetActive(false);
+            if (Coop)
+            {
+                CoopEnd(value);
+            }
+            else
+            {
+                UI.YouWon.SetActive(value);
+                UI.GameOver.SetActive(false);
+
+            }
         }
     }
 
@@ -206,5 +221,31 @@ public class GameManager : MonoBehaviour
     {
         GameOver = false;
         InitGame(_currentLevel);
+    }
+
+    private void CoopEnd(bool value)
+    {
+        if (value)
+        {
+
+            if (_score1 > _score2)
+            {
+                UI.BlueWins.SetActive(true);
+            }
+            else if (_score1 < _score2)
+            {
+                UI.RedWins.SetActive(true);
+            }
+            else
+            {
+                UI.GameOver.SetActive(true);
+            }
+        }
+        else
+        {
+            UI.BlueWins.SetActive(false);
+            UI.RedWins.SetActive(false);
+            UI.GameOver.SetActive(false);
+        }
     }
 }
