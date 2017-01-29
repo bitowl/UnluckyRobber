@@ -346,6 +346,8 @@ GameObject:
   - component: {fileID: 114415179386343768}
   - component: {fileID: 114625578893290520}
   - component: {fileID: 81056303625685134}
+  - component: {fileID: 82402907133820376}
+  - component: {fileID: 114998577585568168}
   m_Layer: 8
   m_Name: player
   m_TagString: Player
@@ -966,7 +968,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1565975826693418}
-  m_LocalRotation: {x: 0.7066928, y: 0.7066929, z: 0.02419226, w: -0.024193611}
+  m_LocalRotation: {x: 0.7066928, y: 0.7066929, z: 0.024192246, w: -0.024193596}
   m_LocalPosition: {x: -0.18685994, y: 0.010557107, z: 0.034074783}
   m_LocalScale: {x: 1, y: 1, z: 1.0000293}
   m_Children: []
@@ -1073,7 +1075,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1358078529336098}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.459, z: 0}
+  m_LocalPosition: {x: 0, y: -0.399, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4386803121067592}
@@ -1532,6 +1534,86 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1535631750422466}
   m_Enabled: 1
+--- !u!82 &82402907133820376
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1535631750422466}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 4c6ce4bcd0a26fa46a9a4c4d534b5d9f, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95018921514945336
 Animator:
   serializedVersion: 3
@@ -1560,8 +1642,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38833584aaf88f440849872140128291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SoundPlayer: {fileID: 114998577585568168}
   GroundCheck: {fileID: 4709787527892164}
-  GroundDistance: 0.15
+  GroundDistance: 0.2
   GroundLayerMask:
     serializedVersion: 2
     m_Bits: 4294967039
@@ -1586,11 +1669,11 @@ MonoBehaviour:
   Ragdoll: {fileID: 1055424708838672}
   MountVictim: {fileID: 114829729827053172}
   PunchPoint: {fileID: 4240738625093450}
-  PunchRadius: 0.5
+  PunchRadius: 0.7
   PunchableLayerMask:
     serializedVersion: 2
     m_Bits: 4294967039
-  PunchForce: {x: 400, y: 0, z: 0}
+  PunchForce: {x: 800, y: 50, z: 0}
   Animator: {fileID: 95018921514945336}
   InitialPosition: {x: -8.59, y: -0.279, z: 0}
   Throw: P1 B
@@ -1615,6 +1698,25 @@ MonoBehaviour:
   MinThrowForce: {x: 4000, y: 1000, z: 0}
   MaxThrowForce: {x: 15000, y: 5000, z: 0}
   MaxThrowTime: 1
+--- !u!114 &114998577585568168
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1535631750422466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2adb9be62daef3c469f5ad605eabf6cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  JumpSound: {fileID: 8300000, guid: 4c6ce4bcd0a26fa46a9a4c4d534b5d9f, type: 3}
+  DoubleJumpSound: {fileID: 8300000, guid: 2b3c8ffdcedea9f458005623b0897f7d, type: 3}
+  PunchSound: {fileID: 8300000, guid: 849c1db4b58242341a26551816b32ff6, type: 3}
+  PickUpSound: {fileID: 8300000, guid: f1b2f1a0117a5c14c967ee3abe2410b7, type: 3}
+  ThrowSound: {fileID: 8300000, guid: 849c1db4b58242341a26551816b32ff6, type: 3}
+  DeathSound: {fileID: 8300000, guid: 93a4eeba6e489f94a8c12c1e4bc71bc3, type: 3}
+  HurtSound: {fileID: 8300000, guid: 93a4eeba6e489f94a8c12c1e4bc71bc3, type: 3}
+  ScoreSound: {fileID: 8300000, guid: 5d8652191f1bd984b9db5b9d0d8480e5, type: 3}
 --- !u!135 &135444267235391760
 SphereCollider:
   m_ObjectHideFlags: 1

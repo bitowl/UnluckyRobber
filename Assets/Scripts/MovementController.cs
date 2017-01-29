@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
-
+    public SoundPlayer SoundPlayer;
     public Transform GroundCheck;
     public float GroundDistance;
     //    public float GroundCheckRadius = 0.15f;
@@ -86,6 +86,12 @@ public class MovementController : MonoBehaviour
             if (!_isGrounded)
             {
                 _doubleJumpAvailable = false;
+                SoundPlayer.DoubleJump();
+            }
+            else
+            {
+                SoundPlayer.Jump();
+
             }
             _doJump = false;
         }

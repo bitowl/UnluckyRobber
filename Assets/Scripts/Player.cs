@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     protected MovementController _movementController;
-
+    protected internal SoundPlayer _soundPlayer;
     public GameObject Ragdoll;
 
     public MountVictim MountVictim;
@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         _movementController = GetComponent<MovementController>();
+        _soundPlayer = GetComponent<SoundPlayer>();
     }
 
     // Update is called once per frame
@@ -54,6 +55,7 @@ public class Player : MonoBehaviour
     public void Punch()
     {
         Animator.SetTrigger("attack");
+        _soundPlayer.Punch();
         var colliders = Physics.OverlapSphere(PunchPoint.position, PunchRadius, PunchableLayerMask);
         foreach (var collider in colliders)
         {
@@ -69,7 +71,12 @@ public class Player : MonoBehaviour
 
     public void Die(string message)
     {
+        if (GameManager.instance.GameOver)
+        {
+            return; // We cannot die twice
+        }
 
+        _soundPlayer.Death();
         // TODO: print
         Debug.Log("DEATH BY: " + message);
 
@@ -113,9 +120,11 @@ public class Player : MonoBehaviour
 
     public void Burn()
     {
+        _soundPlayer.Hurt();
         foreach (var fireParticle in FireParticles)
         {
             fireParticle.Play();
         }
     }
+
 }
