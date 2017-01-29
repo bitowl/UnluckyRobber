@@ -187,6 +187,7 @@ public class GameManager : MonoBehaviour
         {
             AddScore2(score);
         }
+        Destroy(victim); // don't count the same victim twice
     }
 
     public void AddScore1(int score)

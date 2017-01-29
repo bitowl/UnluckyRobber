@@ -7,7 +7,7 @@ public class Trapdoor : MonoBehaviour
 
     public Rigidbody Target;
     public bool OpenOnCollideWithPlayer = true;
-
+    public bool _opened = false;
 
 	// Use this for initialization
 	void Start ()
@@ -18,8 +18,10 @@ public class Trapdoor : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         Debug.Log("ON TRIGGER ENTER" + other);
-        if (other.tag == "Player")
+        if (!_opened && other.tag == "Player")
         {
+            _opened = true;
+            other.GetComponent<SoundPlayer>().Trap();
             Open();
         }
     }
