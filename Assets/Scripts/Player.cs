@@ -65,6 +65,19 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
+
+        foreach (var body in gameObject.GetComponentsInChildren<Rigidbody>())
+        {
+            Debug.Log("kill " + body);
+            body.isKinematic = false;
+        }
+
+        foreach (var collider in gameObject.GetComponentsInChildren<Collider>())
+        {
+            collider.enabled = true;
+        }
+        gameObject.GetComponentInChildren<Animator>().enabled = false;
+
         // gameObject.transform.position = new Vector3(0, 0, 0);
         if (MountVictim.IsCarrying)
         {
