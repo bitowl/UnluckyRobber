@@ -62,11 +62,11 @@ public class GameManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
-        InitGame(InitialLevel);
     }
 
     void Start()
     {
+        InitGame(InitialLevel);
         if (UI == null)
         {
             UI = GameObject.Find("UI").GetComponent<UI>();

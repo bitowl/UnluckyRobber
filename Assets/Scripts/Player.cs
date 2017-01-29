@@ -13,14 +13,16 @@ public class Player : MonoBehaviour
     public MountVictim MountVictim;
     public Transform PunchPoint;
     public float PunchRadius;
+
     public LayerMask PunchableLayerMask;
     public Vector3 PunchForce;
+    public Vector3 PunchForceAgainstPlayers;
     public Animator Animator;
 
     public Vector3 InitialPosition;
 
-    public string[] Jump = { "P1 A", "P1 Y"};
-    public string[] Throw = { "P1 B", "P1 X"};
+    public string[] Jump = {"P1 A", "P1 Y"};
+    public string[] Throw = {"P1 B", "P1 X"};
     public string Horizontal = "P1 Horizontal";
 
     public ParticleSystem[] FireParticles;
@@ -57,21 +59,33 @@ public class Player : MonoBehaviour
                 }
             }
         }
-
     }
 
     public void Punch()
     {
         Animator.SetTrigger("attack");
         _soundPlayer.Punch();
-        var colliders = Physics.OverlapSphere(PunchPoint.position, PunchRadius, PunchableLayerMask);
+        var colliders = Physics.OverlapSphere(PunchPoint.position, PunchRadius);
+
+        var force = PunchForce;
         foreach (var collider in colliders)
         {
+            if (collider.tag == "Player")
+            {
+                if (collider.GetComponent<Player>() == this)
+                {
+                    continue;
+                }
+                collider.GetComponent<Player>().HurtFromPunch();
+                force = PunchForceAgainstPlayers;
+//                Debug.Log("COLLIDER: " + collider);
+                //              continue;
+            }
             var rb = collider.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                rb.AddForce(new Vector3((_movementController.LookingRight ? 1 : -1) * PunchForce.x, PunchForce.y,
-                    PunchForce.z));
+                rb.AddForce(new Vector3((_movementController.LookingRight ? 1 : -1) * force.x, force.y,
+                    force.z));
             }
         }
         Debug.Log("punching " + colliders.Length);
@@ -121,9 +135,6 @@ public class Player : MonoBehaviour
             collider.enabled = false;
         }
         gameObject.GetComponentInChildren<Animator>().enabled = true;
-
-
-
     }
 
     public void Burn()
@@ -135,4 +146,9 @@ public class Player : MonoBehaviour
         }
     }
 
+
+    public void HurtFromPunch()
+    {
+        _movementController.HurtFromPunch();
+    }
 }

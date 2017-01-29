@@ -26,6 +26,9 @@ public class MovementController : MonoBehaviour
 
     private Player _player;
 
+    public float HurtTime;
+    private float _hurtTimeLeft = 0;
+
 
     public bool LookingRight
     {
@@ -62,8 +65,16 @@ public class MovementController : MonoBehaviour
     void FixedUpdate()
     {
         // Debug.Log("grounded:" +_isGrounded + " jump: " + _doJump);
-        if (GameManager.instance.GameOver)
+        if (GameManager.instance.GameOver || _hurtTimeLeft > 0)
         {
+            if (_hurtTimeLeft > 0)
+            {
+                _hurtTimeLeft -= Time.deltaTime;
+                if (_hurtTimeLeft < 0)
+                {
+                    _hurtTimeLeft = 0;
+                }
+            }
             return; // No player updates 
         }
         // check if is grounded
@@ -111,5 +122,10 @@ public class MovementController : MonoBehaviour
     {
         _lookingRight = !_lookingRight;
         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+    }
+
+    public void HurtFromPunch()
+    {
+        _hurtTimeLeft = HurtTime;
     }
 }
