@@ -14,6 +14,7 @@ public class MovementController : MonoBehaviour
 
     public float JumpVelocity = 5;
     public float MaxSpeed = 8;
+    public float MaxSpeedCarrying = 5;
 
     private Rigidbody _rigidbody;
 
@@ -70,7 +71,9 @@ public class MovementController : MonoBehaviour
 
         float horizontal = Input.GetAxis(Horizontal);
 
-        _rigidbody.velocity = new Vector3(horizontal * MaxSpeed, _rigidbody.velocity.y, _rigidbody.velocity.z);
+        var speed = _player.MountVictim.IsCarrying ? MaxSpeedCarrying : MaxSpeed;
+
+        _rigidbody.velocity = new Vector3(horizontal * speed, _rigidbody.velocity.y, _rigidbody.velocity.z);
 
         if ((horizontal > 0 && !_lookingRight) || (horizontal < 0 && _lookingRight))
         {

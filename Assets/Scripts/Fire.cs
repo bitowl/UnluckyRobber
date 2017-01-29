@@ -31,6 +31,7 @@ public class Fire : MonoBehaviour
         if (other.tag == "Player")
         {
             _inFire = other.GetComponent<Player>();
+            _inFire.Burn();
             inFireTime = 0;
         }
     }

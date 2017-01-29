@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
 {
     protected MovementController _movementController;
 
+    public GameObject Ragdoll;
+
     public MountVictim MountVictim;
     public Transform PunchPoint;
     public float PunchRadius;
@@ -17,6 +19,8 @@ public class Player : MonoBehaviour
     public Vector3 InitialPosition;
 
     public string Throw = "P1 B";
+
+    public ParticleSystem[] FireParticles;
 
     // Use this for initialization
     void Start()
@@ -69,12 +73,12 @@ public class Player : MonoBehaviour
         // TODO: print
         Debug.Log("DEATH BY: " + message);
 
-        foreach (var body in gameObject.GetComponentsInChildren<Rigidbody>())
+        foreach (var body in Ragdoll.GetComponentsInChildren<Rigidbody>())
         {
             body.isKinematic = false;
         }
 
-        foreach (var collider in gameObject.GetComponentsInChildren<Collider>())
+        foreach (var collider in Ragdoll.GetComponentsInChildren<Collider>())
         {
             collider.enabled = true;
         }
@@ -92,27 +96,26 @@ public class Player : MonoBehaviour
     {
         transform.position = InitialPosition;
 
-        foreach (var body in gameObject.GetComponentsInChildren<Rigidbody>())
+        foreach (var body in Ragdoll.GetComponentsInChildren<Rigidbody>())
         {
             body.isKinematic = true;
         }
 
-        foreach (var collider in gameObject.GetComponentsInChildren<Collider>())
+        foreach (var collider in Ragdoll.GetComponentsInChildren<Collider>())
         {
             collider.enabled = false;
         }
         gameObject.GetComponentInChildren<Animator>().enabled = true;
 
-        // enable everything on the player themself
-        foreach (var body in gameObject.GetComponents<Rigidbody>())
-        {
-            body.isKinematic = false;
-        }
 
-        foreach (var collider in gameObject.GetComponents<Collider>())
-        {
-            collider.enabled = true;
-        }
 
+    }
+
+    public void Burn()
+    {
+        foreach (var fireParticle in FireParticles)
+        {
+            fireParticle.Play();
+        }
     }
 }
