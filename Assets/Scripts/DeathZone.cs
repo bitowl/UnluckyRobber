@@ -19,7 +19,7 @@ public class DeathZone : MonoBehaviour {
         if (other.tag == "Player")
         {
             var player = other.GetComponent<Player>();
-            player.Die();
+            player.Die("You fell too far");
         }
     }
 }

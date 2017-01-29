@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
             if (_time < 0)
             {
                 _time = 0;
-                Player.Die();
+                Player.Die("You ran out of time");
             }
         }
         UI.Time = (int) _time;

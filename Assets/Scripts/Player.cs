@@ -63,12 +63,14 @@ public class Player : MonoBehaviour
         Debug.Log("punching " + colliders.Length);
     }
 
-    public void Die()
+    public void Die(string message)
     {
+
+        // TODO: print
+        Debug.Log("DEATH BY: " + message);
 
         foreach (var body in gameObject.GetComponentsInChildren<Rigidbody>())
         {
-            Debug.Log("kill " + body);
             body.isKinematic = false;
         }
 
@@ -92,7 +94,6 @@ public class Player : MonoBehaviour
 
         foreach (var body in gameObject.GetComponentsInChildren<Rigidbody>())
         {
-            Debug.Log("kill " + body);
             body.isKinematic = true;
         }
 
