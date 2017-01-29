@@ -21,6 +21,17 @@ public class GameManager : MonoBehaviour
         {
             _gameOver = value;
             UI.GameOver.SetActive(_gameOver);
+            UI.YouWon.SetActive(false);
+        }
+    }
+
+    public bool Win
+    {
+        set
+        {
+            _gameOver = value;
+            UI.YouWon.SetActive(value);
+            UI.GameOver.SetActive(false);
         }
     }
 
@@ -29,6 +40,7 @@ public class GameManager : MonoBehaviour
 
     public string InitialLevel;
     private string _currentLevel;
+    private int _currentVictims;
 
     void Awake()
     {
@@ -58,6 +70,7 @@ public class GameManager : MonoBehaviour
     {
         _time = TimePerGame;
         _score = 0;
+        _currentVictims = 0;
         Player.ResetPlayer();
 
         var uiLoaded = false;
@@ -104,10 +117,22 @@ public class GameManager : MonoBehaviour
                 Player.Die("You ran out of time");
             }
         }
+
+        Debug.Log(_score + "/" + _currentVictims);
+        if (_score >= _currentVictims)
+        {
+            Win = true;
+        }
+
         UI.Time = (int) _time;
         UI.Score = _score;
     }
 
+
+    public void RegisterVictim()
+    {
+        _currentVictims++;
+    }
 
     public void AddScore(int score)
     {

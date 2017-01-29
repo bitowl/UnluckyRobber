@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(MovementController))]
@@ -34,6 +35,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Debug.Log(Input.GetJoystickNames().Length);
         foreach (var ThrowButton in Throw)
         {
             if (Input.GetButtonDown(ThrowButton))
