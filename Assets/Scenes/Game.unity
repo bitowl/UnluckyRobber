@@ -214,11 +214,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4471264765173808, guid: 15a2428ebf1ab494d97d98eb64576f00, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.70669276
+      value: 0.7066928
       objectReference: {fileID: 0}
     - target: {fileID: 4471264765173808, guid: 15a2428ebf1ab494d97d98eb64576f00, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.7066928
+      value: 0.7066929
       objectReference: {fileID: 0}
     - target: {fileID: 4471264765173808, guid: 15a2428ebf1ab494d97d98eb64576f00, type: 2}
       propertyPath: m_LocalRotation.z
@@ -295,6 +295,7 @@ MonoBehaviour:
   Animator: {fileID: 87657032}
   JumpVelocity: 12
   MaxSpeed: 8
+  MaxSpeedCarrying: 5
   _isGrounded: 0
   Horizontal: P1 Horizontal
   Jump: P1 B
@@ -347,6 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39e13716031db3e438e67a4ee31163a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Ragdoll: {fileID: 0}
   MountVictim: {fileID: 1063394692}
   PunchPoint: {fileID: 191684689}
   PunchRadius: 0.5
@@ -357,6 +359,7 @@ MonoBehaviour:
   Animator: {fileID: 87657032}
   InitialPosition: {x: -8.59, y: -0.279, z: 0}
   Throw: P1 A
+  FireParticles: []
 --- !u!1 &590229785
 GameObject:
   m_ObjectHideFlags: 0
