@@ -94,6 +94,7 @@ ModelImporter:
     7400028: runningWithPeople
     7400030: standard_pose_with_peeps
     7400032: Default Take0
+    7400034: winning1_001
     9500000: //RootNode
     13700000: Circle
     13700002: Circle_005
@@ -1295,10 +1296,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: winning1
-      takeName: winning1
+      name: winning1_001
+      takeName: winning1_001
       firstFrame: -1
-      lastFrame: 19
+      lastFrame: 39
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
