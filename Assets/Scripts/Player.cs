@@ -18,7 +18,9 @@ public class Player : MonoBehaviour
 
     public Vector3 InitialPosition;
 
-    public string Throw = "P1 B";
+    public string[] Jump = { "P1 A", "P1 Y"};
+    public string[] Throw = { "P1 B", "P1 X"};
+    public string Horizontal = "P1 Horizontal";
 
     public ParticleSystem[] FireParticles;
 
@@ -32,24 +34,28 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown(Throw))
+        foreach (var ThrowButton in Throw)
         {
-            if (MountVictim.CanThrowSometing)
+            if (Input.GetButtonDown(ThrowButton))
             {
-                MountVictim.ThrowingButtonDown();
+                if (MountVictim.CanThrowSometing)
+                {
+                    MountVictim.ThrowingButtonDown();
+                }
+                else
+                {
+                    Punch();
+                }
             }
-            else
+            if (Input.GetButtonUp(ThrowButton))
             {
-                Punch();
+                if (MountVictim.CanThrowSometing)
+                {
+                    MountVictim.ThrowingButtonUp();
+                }
             }
         }
-        if (Input.GetButtonUp(Throw))
-        {
-            if (MountVictim.CanThrowSometing)
-            {
-                MountVictim.ThrowingButtonUp();
-            }
-        }
+
     }
 
     public void Punch()

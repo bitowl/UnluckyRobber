@@ -8,6 +8,7 @@ public class UI : MonoBehaviour {
     public Text ScoreText;
     public Text TimeText;
     public GameObject GameOver;
+    public GameObject YouWon;
 
     public int Score
     {
