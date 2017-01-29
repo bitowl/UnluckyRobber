@@ -7,9 +7,15 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public UI UI;
+    protected UI UI;
     public Player Player;
+    [SerializeField]
+    protected bool _coop;
 
+    public bool Coop
+    {
+        get { return _coop; }
+    }
     public int TimePerGame = 100;
 
     private bool _gameOver;
@@ -118,7 +124,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        Debug.Log(_score + "/" + _currentVictims);
+       // Debug.Log(_score + "/" + _currentVictims);
         if (_score >= _currentVictims)
         {
             Win = true;

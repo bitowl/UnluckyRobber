@@ -119,8 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e25e0afec0e3ca4ebedf0797ed97d2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI: {fileID: 0}
   Player: {fileID: 684561624}
+  _coop: 1
   TimePerGame: 100
   InitialLevel: TestLevel_Stefan
 --- !u!4 &184278501
@@ -190,6 +190,11 @@ Prefab:
     - target: {fileID: 4471264765173808, guid: 15a2428ebf1ab494d97d98eb64576f00, type: 2}
       propertyPath: m_LocalRotation.w
       value: -0.024193594
+      objectReference: {fileID: 0}
+    - target: {fileID: 81056303625685134, guid: 15a2428ebf1ab494d97d98eb64576f00,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 15a2428ebf1ab494d97d98eb64576f00, type: 2}
@@ -268,6 +273,103 @@ Transform:
   m_PrefabParentObject: {fileID: 4386803121067592, guid: 15a2428ebf1ab494d97d98eb64576f00,
     type: 2}
   m_PrefabInternal: {fileID: 293422679}
+--- !u!4 &1184019191 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4386803121067592, guid: 15a2428ebf1ab494d97d98eb64576f00,
+    type: 2}
+  m_PrefabInternal: {fileID: 1340521264}
+--- !u!1001 &1340521264
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4386803121067592, guid: 15a2428ebf1ab494d97d98eb64576f00, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -6.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 4386803121067592, guid: 15a2428ebf1ab494d97d98eb64576f00, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.279
+      objectReference: {fileID: 0}
+    - target: {fileID: 4386803121067592, guid: 15a2428ebf1ab494d97d98eb64576f00, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4386803121067592, guid: 15a2428ebf1ab494d97d98eb64576f00, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4386803121067592, guid: 15a2428ebf1ab494d97d98eb64576f00, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4386803121067592, guid: 15a2428ebf1ab494d97d98eb64576f00, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4386803121067592, guid: 15a2428ebf1ab494d97d98eb64576f00, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4386803121067592, guid: 15a2428ebf1ab494d97d98eb64576f00, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471264765173808, guid: 15a2428ebf1ab494d97d98eb64576f00, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0.7066928
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471264765173808, guid: 15a2428ebf1ab494d97d98eb64576f00, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.7066929
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471264765173808, guid: 15a2428ebf1ab494d97d98eb64576f00, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0.024192242
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471264765173808, guid: 15a2428ebf1ab494d97d98eb64576f00, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: -0.024193592
+      objectReference: {fileID: 0}
+    - target: {fileID: 1535631750422466, guid: 15a2428ebf1ab494d97d98eb64576f00, type: 2}
+      propertyPath: m_Name
+      value: player (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114625578893290520, guid: 15a2428ebf1ab494d97d98eb64576f00,
+        type: 2}
+      propertyPath: Jump.Array.data[0]
+      value: P2 A
+      objectReference: {fileID: 0}
+    - target: {fileID: 114625578893290520, guid: 15a2428ebf1ab494d97d98eb64576f00,
+        type: 2}
+      propertyPath: Jump.Array.data[1]
+      value: P2 Y
+      objectReference: {fileID: 0}
+    - target: {fileID: 114625578893290520, guid: 15a2428ebf1ab494d97d98eb64576f00,
+        type: 2}
+      propertyPath: Throw.Array.data[0]
+      value: P2 B
+      objectReference: {fileID: 0}
+    - target: {fileID: 114625578893290520, guid: 15a2428ebf1ab494d97d98eb64576f00,
+        type: 2}
+      propertyPath: Throw.Array.data[1]
+      value: P2 X
+      objectReference: {fileID: 0}
+    - target: {fileID: 114625578893290520, guid: 15a2428ebf1ab494d97d98eb64576f00,
+        type: 2}
+      propertyPath: Horizontal
+      value: P2 Horizontal
+      objectReference: {fileID: 0}
+    - target: {fileID: 81056303625685134, guid: 15a2428ebf1ab494d97d98eb64576f00,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 15a2428ebf1ab494d97d98eb64576f00, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1602502458
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,7 +397,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1602502458}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!92 &1602502460
 Behaviour:
   m_ObjectHideFlags: 0
@@ -363,7 +465,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1602502458}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff241f7540b54fd41bb6de959346d023, type: 3}
   m_Name: 
@@ -377,13 +479,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1602502458}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f76806479d916a64aa03f8e3eba7912f, type: 3}
+  m_Script: {fileID: 11500000, guid: d02faf6b0e591ec45ac469552adf37af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 684561629}
-  distance: 10
-  height: 5
-  rotationDamping: 0
-  heightDamping: 0
+  dampTime: 0.15
+  target1: {fileID: 684561629}
+  target2: {fileID: 1184019191}
+  OffsetY: 1.5
