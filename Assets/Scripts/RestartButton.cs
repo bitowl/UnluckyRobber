@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class RestartButton : MonoBehaviour
 {
-    public float WaitTime = 1;
-    private float _alreadyWaited = 0;
+    public float WaitTime = 2;
+    public float _alreadyWaited = 0;
 
     private string[] _continueKeys =
     {
         "P1 A", "P1 B", "P1 X", "P1 Y",
         "P2 A", "P2 B", "P2 X", "P2 Y"
     };
-
+    
     public void Start()
     {
         _alreadyWaited = 0;
@@ -35,5 +35,6 @@ public class RestartButton : MonoBehaviour
     public void Restart()
     {
         GameManager.instance.Restart();
+        _alreadyWaited = 0;
     }
 }

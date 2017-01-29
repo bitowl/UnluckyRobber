@@ -968,7 +968,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1565975826693418}
-  m_LocalRotation: {x: 0.7066928, y: 0.7066929, z: 0.024192236, w: -0.024193587}
+  m_LocalRotation: {x: 0.7066928, y: 0.7066929, z: 0.024192235, w: -0.024193585}
   m_LocalPosition: {x: -0.18685994, y: 0.010557107, z: 0.034074783}
   m_LocalScale: {x: 1, y: 1, z: 1.0000293}
   m_Children: []
@@ -1686,7 +1686,7 @@ MonoBehaviour:
   FireParticles:
   - {fileID: 198880343018445742}
   - {fileID: 198173737332004172}
-  RespawnTime: 2
+  RespawnTime: 1
 --- !u!114 &114829729827053172
 MonoBehaviour:
   m_ObjectHideFlags: 1
